@@ -11,14 +11,21 @@ let jelly = {
 document.addEventListener('keydown', function(event) {
   if (event.key === 'a') {
     jelly.velocityX -= 0.5;
-  } else if (event.key === 'd') {
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'd') {
     jelly.velocityX += 0.5;
-  } else if (event.key === 'w') {
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+if (event.key === 'w') {
     jelly.velocityY -= 10;
   }
-  jelly.image.style.left = jelly.x + 'px';
-  jelly.image.style.top = jelly.y +'px';
 });
+
 function update() {
   //Gravity
   jelly.velocityY += gravity;
