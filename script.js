@@ -1,17 +1,17 @@
-const box = document.getElementById('box');
-let boxX = 100;
-let boxY = 100;
+const jelly = document.getElementById('box');
+let jellyx = 100;
+let jellyy = 100;
 
 document.addEventListener('keydown', function(event) {
   if (event.key === 'a') {
-    boxX -= 10;
+    jellyx -= 10;
   } else if (event.key === 'd') {
-    boxX += 10;
+    jellyx += 10;
   } else if (event.key === 'w') {
-    boxY -= 10;
+    jellyy -= 10;
   } else if (event.key === 's') {
-    boxY += 10;
+    jellyy += 10;
   }
-  box.style.left = boxX + 'px';
-  box.style.top = boxY +'px';
+  jelly.style.left = jellyx + 'px';
+  jelly.style.top = jellyy +'px';
 });
