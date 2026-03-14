@@ -55,7 +55,7 @@ function checkPlatforms() {
   }
 }
 
-checkPlatforms()
+
 function drawPlatforms() {
   platforms.forEach(p => {
     const plat = document.getElementById('platform-' + p.x);
@@ -120,7 +120,7 @@ function update() {
 
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
-
+  checkPlatforms()
   requestAnimationFrame(update);
 }
 
