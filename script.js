@@ -1,6 +1,6 @@
 const jellyImg = document.getElementById('jellyfish');
 const gravity = 0.5;
-let jump = 1;
+let jump = 0;
 let jelly = {
   x: 100,
   y: 100,
@@ -105,8 +105,8 @@ function update() {
   }
 
   // Jump
-  if (keys.w && jump > 0) {
-    jelly.velocityY = -13;
+  if (keys.w && jump > 0 && jelly.velocityY==0) {
+    jelly.velocityY = -11;
     jump -= 1;
     keys.w = false;
   }
