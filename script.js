@@ -1,6 +1,42 @@
 const jellyImg = document.getElementById('jellyfish');
 const gravity = 0.5;
 let jump = 1;
+const platforms = [
+  { x: 50, y: 300, width: 200, height: 20 },
+  { x: 300, y: 200, width: 150, height: 20 },
+  { x: 500, y: 350, width: 200, height: 20 }
+];
+function checkPlatforms() {
+  for (let platform of platforms) {
+    // Check if jellyfish is falling onto the platform
+    if (
+      jelly.y + jelly.image.height >= platform.y && // bottom of jelly >= top of platform
+      jelly.y + jelly.image.height <= platform.y + platform.height && // prevent sticking from below
+      jelly.x + jelly.image.width > platform.x && // jelly right past left side
+      jelly.x < platform.x + platform.width // jelly left before right side
+    ) {
+      jelly.y = platform.y - jelly.image.height; // place on top
+      jelly.velocityY = 0;
+      jump = 1; // reset jump
+    }
+  }
+}
+function drawPlatforms() {
+  platforms.forEach(p => {
+    const plat = document.getElementById('platform-' + p.x);
+    if (!plat) {
+      const div = document.createElement('div');
+      div.id = 'platform-' + p.x;
+      div.style.position = 'absolute';
+      div.style.left = p.x + 'px';
+      div.style.top = p.y + 'px';
+      div.style.width = p.width + 'px';
+      div.style.height = p.height + 'px';
+      div.style.backgroundColor = 'brown';
+      document.body.appendChild(div);
+    }
+  });
+}
 let jelly = {
   x: 100,
   y: 100,
@@ -14,8 +50,8 @@ let keys = {
   w: false
 };
 
-// Get platform
-const platform = document.getElementById('platform');
+drawPlatforms()
+
 
 document.addEventListener('keydown', function(event) {
 if (event.key === 'w' && jump >= 1) {
@@ -31,21 +67,18 @@ document.addEventListener('keyup', (event) => {
 });
   
 function update() {
-  const platTop = platform.offsetTop;
-  const platLeft = platform.offsetLeft;
-  const platRight = platLeft + platform.offsetWidth;
   // Horizontal movement acceleration
-  if (keys.a) jelly.velocityX -= 0.5; // smaller increment for smoothness
+  if (keys.a) jelly.velocityX -= 0.5;
   if (keys.d) jelly.velocityX += 0.5;
-
-  // Apply friction
-  jelly.velocityX *= 0.9; // stronger friction for better control
-
+  jelly.velocityX *= 0.9;
   jelly.x += jelly.velocityX;
 
-  // Gravity & vertical movement
+  // Gravity
   jelly.velocityY += gravity;
   jelly.y += jelly.velocityY;
+
+  // Check collision with platforms
+  checkPlatforms();
 
   // Ground collision
   if (jelly.y > 400) {
@@ -58,10 +91,9 @@ function update() {
   if (keys.w && jump > 0) {
     jelly.velocityY = -10;
     jump -= 1;
-    keys.w = false; // prevent holding jump for repeated boosts
+    keys.w = false;
   }
 
-  // Update position
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
 
