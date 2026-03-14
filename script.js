@@ -55,7 +55,7 @@ drawPlatforms()
 
 document.addEventListener('keydown', function(event) {
 if (event.key === 'w' && jump >= 1) {
-    jelly.velocityY -= 10;
+    jelly.velocityY -= 15;
     jump -= 1;
   }
 });
