@@ -68,8 +68,8 @@ document.addEventListener('keyup', (event) => {
   
 function update() {
   // Horizontal movement acceleration
-  if (keys.a) jelly.velocityX -= 0.5;
-  if (keys.d) jelly.velocityX += 0.5;
+  if (keys.a) jelly.velocityX -= 0.6;
+  if (keys.d) jelly.velocityX += 0.6;
   jelly.velocityX *= 0.9;
   jelly.x += jelly.velocityX;
 
