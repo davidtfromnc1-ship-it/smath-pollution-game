@@ -42,6 +42,7 @@ function checkPlatforms() {
     }
   }
 }
+checkPlatforms()
 function drawPlatforms() {
   platforms.forEach(p => {
     const plat = document.getElementById('platform-' + p.x);
