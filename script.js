@@ -69,7 +69,7 @@ function drawPlatforms() {
       div.style.top = p.y + 'px';
       div.style.width = p.width + 'px';
       div.style.height = p.height + 'px';
-      div.style.backgroundColor = 'brown';
+      div.style.backgroundColor = '#2ecc71';
       document.body.appendChild(div);
     }
   });
