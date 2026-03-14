@@ -22,7 +22,8 @@ const platforms = [
   { x: 240, y: 400, width: 50, height: 40 },
   { x: 160, y: 300, width: 40, height: 50 },
   { x: 80, y: 200, width: 30, height: 60 },
-  { x: 600, y: -400, width: 2000, height: 900 }
+  { x: 600, y: -400, width: 2000, height: 900 },
+  { x: 1200, y: -400, width: 2000, height: 1200 }
 ];
 
 const trashTypes = [
