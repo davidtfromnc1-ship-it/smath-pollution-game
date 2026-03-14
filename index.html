@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Save the Ocean</title>
-  <link rel="stylesheet" href="style.css">
+<title>Ocean Guardian</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>🌊 Save the Ocean!</h1>
-  <p>Click trash to clean pollution. Keep the fish alive!</p>
 
-  <div id="game-area">
-    <img src="assets/fish.png" id="fish" />
-    <img src="assets/trash.png" class="trash" onclick="clean(this)" />
-    <img src="assets/trash.png" class="trash" onclick="clean(this)" />
-    <img src="assets/trash.png" class="trash" onclick="clean(this)" />
-  </div>
+<h1>🌊 Ocean Guardian</h1>
 
-  <p>Pollution Level: <span id="pollution">3</span></p>
+<div id="healthContainer">
+Ocean Health
+<div id="healthBar"></div>
+</div>
 
-  <button onclick="goToLore()">Learn About Pollution</button>
+<p id="score">Trash Removed: 0</p>
 
-  <script src="script.js"></script>
+<div id="ocean"></div>
+
+<button onclick="spawnTrash()">Spawn Pollution</button>
+
+<script src="script.js"></script>
+
 </body>
 </html>
