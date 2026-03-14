@@ -1,4 +1,4 @@
-let pollution = 3;
+let pollution = 5;
 
 function clean(trash) {
   trash.remove();
