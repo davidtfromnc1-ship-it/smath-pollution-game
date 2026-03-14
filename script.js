@@ -8,52 +8,58 @@ let jelly = {
   velocityX: 0,
   image: jellyImg
 };
+let keys = {
+  a: false,
+  d: false,
+  w: false
+};
 
 // Get platform
 const platform = document.getElementById('platform');
 
 document.addEventListener('keydown', function(event) {
-  if (event.key === 'a') {
-    jelly.velocityX -= 5;
-  } else if (event.key === 'd') {
-    jelly.velocityX += 5;
-  } else if (event.key === 'w' && jump >= 1) {
+if (event.key === 'w' && jump >= 1) {
     jelly.velocityY -= 10;
     jump -= 1;
   }
 });
-
+document.addEventListener('keydown', (event) => {
+  if (event.key in keys) keys[event.key] = true;
+});
+document.addEventListener('keyup', (event) => {
+  if (event.key in keys) keys[event.key] = false;
+});
+  
 function update() {
-  // Gravity
-  jelly.velocityY += gravity;
-  jelly.y += jelly.velocityY;
-
-  // Platform collision
   const platTop = platform.offsetTop;
   const platLeft = platform.offsetLeft;
   const platRight = platLeft + platform.offsetWidth;
+  // Horizontal movement acceleration
+  if (keys.a) jelly.velocityX -= 0.5; // smaller increment for smoothness
+  if (keys.d) jelly.velocityX += 0.5;
 
-  if (
-    jelly.y + jellyImg.offsetHeight >= platTop &&
-    jelly.y + jellyImg.offsetHeight <= platTop + 20 && // small margin for collision
-    jelly.x + jellyImg.offsetWidth > platLeft &&
-    jelly.x < platRight
-  ) {
-    jelly.y = platTop - jellyImg.offsetHeight;
-    jelly.velocityY = 0;
-    jump = 1; // restore jump when landing on platform
-  }
+  // Apply friction
+  jelly.velocityX *= 0.9; // stronger friction for better control
 
-  // Floor collision
+  jelly.x += jelly.velocityX;
+
+  // Gravity & vertical movement
+  jelly.velocityY += gravity;
+  jelly.y += jelly.velocityY;
+
+  // Ground collision
   if (jelly.y > 400) {
     jelly.y = 400;
     jelly.velocityY = 0;
     jump = 1;
   }
 
-  // Horizontal movement friction
-  jelly.velocityX *= 0.95;
-  jelly.x += jelly.velocityX;
+  // Jump
+  if (keys.w && jump > 0) {
+    jelly.velocityY = -10;
+    jump -= 1;
+    keys.w = false; // prevent holding jump for repeated boosts
+  }
 
   // Update position
   jelly.image.style.left = jelly.x + 'px';
