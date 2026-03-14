@@ -29,7 +29,7 @@ function update() {
   }
   //Horizontal Movement
   jelly.velocityX += jelly.velocityX;
-  jelly.velocityX *=0.9;
+  jelly.velocityX = jelly.velocityX*0.8;
   jelly.x += jelly.velocityX;
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
