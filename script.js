@@ -1,18 +1,6 @@
 const jellyImg = document.getElementById('jellyfish');
 const gravity = 0.5;
 let jump = 1;
-let jelly = {
-  x: 100,
-  y: 100,
-  velocityY: 0,
-  velocityX: 0,
-  image: jellyImg
-};
-let keys = {
-  a: false,
-  d: false,
-  w: false
-};
 const platforms = [
   { x: 50, y: 300, width: 200, height: 20 },
   { x: 300, y: 200, width: 150, height: 20 },
@@ -49,25 +37,18 @@ function drawPlatforms() {
     }
   });
 }
-for (let p of platforms) {
-  // Check if jellyfish is within horizontal bounds of the platform
-  if (jelly.x + jelly.width > p.x && jelly.x < p.x + p.width) {
-    // Landing on top of platform
-    if (jelly.y + jelly.height >= p.y && jelly.y + jelly.height <= p.y + p.height && jelly.velocityY >= 0) {
-      jelly.y = p.y - jelly.height;
-      jelly.velocityY = 0;
-      jump = 1; // reset jump
-    }
-    // Hitting the bottom of platform
-    if (jelly.y <= p.y + p.height && jelly.y >= p.y && jelly.velocityY < 0) {
-      jelly.y = p.y + p.height;
-      jelly.velocityY = 0; // stop upward movement
-    }
-  }
-}
-const buffer = 2;
-if (jelly.y + jelly.height >= p.y - buffer && jelly.y + jelly.height <= p.y + buffer && jelly.velocityY >= 0) { ... }
-
+let jelly = {
+  x: 100,
+  y: 100,
+  velocityY: 0,
+  velocityX: 0,
+  image: jellyImg
+};
+let keys = {
+  a: false,
+  d: false,
+  w: false
+};
 
 drawPlatforms()
 
