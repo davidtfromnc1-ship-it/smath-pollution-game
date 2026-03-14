@@ -120,15 +120,17 @@ function drawPlatforms() {
 }
 function checkTrash() {
   trashItems = trashItems.filter(trash => {
-      const jellyRight = jelly.x + jelly.width;
+    const jellyRight = jelly.x + jelly.width;
     const jellyBottom = jelly.y + jelly.height;
-    const trashRight = parseFloat(trash.element.style.left) + trash.width;
-    const trashBottom = parseFloat(trash.element.style.top) + trash.height;
+    const trashLeft = trash.element.offsetLeft;
+    const trashTop = trash.element.offsetTop;
+    const trashRight = trashLeft + trash.width;
+    const trashBottom = trashTop + trash.height;
 
     const touching =
-      jellyRight > parseFloat(trash.element.style.left) &&
+      jellyRight > trashLeft &&
       jelly.x < trashRight &&
-      jellyBottom > parseFloat(trash.element.style.top) &&
+      jellyBottom > trashTop &&
       jelly.y < trashBottom;
 
     if (touching) {
@@ -160,7 +162,7 @@ function update() {
   jelly.image.style.top = jelly.y + 'px';
 
   checkPlatforms();
-  checkTrash();  // make sure this is called every frame
+  checkTrash(); // <- call it here every frame
 
   requestAnimationFrame(update);
 }
