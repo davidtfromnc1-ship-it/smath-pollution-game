@@ -1,4 +1,4 @@
-const jellyImg = document.getElementById('box');
+const jellyImg = document.getElementById('jellyfish');
 const gravity = 0.5;
 let jelly = {
   x: 100,
