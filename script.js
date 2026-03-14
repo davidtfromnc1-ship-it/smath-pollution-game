@@ -10,9 +10,9 @@ let jelly = {
 
 document.addEventListener('keydown', function(event) {
   if (event.key === 'a') {
-    jelly.velocityX -= 10;
+    jelly.velocityX -= 0.5;
   } else if (event.key === 'd') {
-    jelly.velocityX += 10;
+    jelly.velocityX += 0.5;
   } else if (event.key === 'w') {
     jelly.velocityY -= 10;
   }
