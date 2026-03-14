@@ -55,6 +55,13 @@ function checkPlatforms() {
       }
     }
   }
+  const buffer = 2; // pixels
+// Top collision
+if (jelly.velocityY > 0 && jellyBottom - jelly.velocityY <= platform.y + buffer) {
+  jelly.y = platform.y - jelly.height;
+  jelly.velocityY = 0;
+  jump = 1;
+}
 }
 
 
@@ -86,12 +93,7 @@ document.addEventListener('keyup', (event) => {
 });
   
 function update() {
-  const buffer = 2; // 2 pixels
-if (jellyBottom >= platform.y - buffer && jellyBottom <= platform.y + buffer && jelly.velocityY >= 0) {
-    jelly.y = platform.y - jelly.height;
-    jelly.velocityY = 0;
-    jump = 1;
-}
+
   // Horizontal movement acceleration
   if (keys.a) jelly.velocityX -= 0.55;
   if (keys.d) jelly.velocityX += 0.55;
