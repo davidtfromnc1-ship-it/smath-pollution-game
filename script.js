@@ -7,18 +7,29 @@ let jelly = {
   image: jellyImg
 }
 
-
 document.addEventListener('keydown', function(event) {
   if (event.key === 'a') {
-    jelly.x -= 100;
+    jelly.x -= 10;
   } else if (event.key === 'd') {
-    jelly.x += 100;
+    jelly.x += 10;
   } else if (event.key === 'w') {
-    jelly.y -= 100;
+    jelly.y -= 10;
   } else if (event.key === 's') {
-    jelly.y += 100;
+    jelly.y += 10;
   }
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y +'px';
 });
+function update() {
+  jelly.velocityY += gravity;
+  jelly.y += jelly.velocityY;
+  if (jelly.y > 400) {
+    jelly.y = 400;
+    jelly.velocityY = 0;
+  }
+  jelly.image.style.left = jelly.x + 'px';
+  jelly.image.style.top = jelly.y + 'px';
+  requestAnimationFrame(update);
+}
+update();
 
