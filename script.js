@@ -13,9 +13,7 @@ document.addEventListener('keydown', function(event) {
   } else if (event.key === 'd') {
     jelly.x += 10;
   } else if (event.key === 'w') {
-    jelly.y -= 10;
-  } else if (event.key === 's') {
-    jelly.y += 10;
+    jelly.velocityY -= 10;
   }
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y +'px';
