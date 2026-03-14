@@ -1,4 +1,4 @@
-let score = 898
+let score = 0
 let health = 20
 
 function spawnTrash(){
