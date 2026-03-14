@@ -10,13 +10,13 @@ let jelly = {
 
 document.addEventListener('keydown', function(event) {
   if (event.key === 'a') {
-    jelly.velocityX -= 0.5;
+    jelly.velocityX -= 5;
   }
 });
 
 document.addEventListener('keydown', function(event) {
   if (event.key === 'd') {
-    jelly.velocityX += 0.5;
+    jelly.velocityX += 5;
   }
 });
 
@@ -35,7 +35,7 @@ function update() {
     jelly.velocityY = 0;
   }
   //Horizontal Movement
-  jelly.velocityX = jelly.velocityX*0.8;
+  jelly.velocityX = jelly.velocityX*0.95;
   jelly.x += jelly.velocityX;
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
