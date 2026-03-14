@@ -36,7 +36,7 @@ function update() {
     jelly.y = 400;
     jelly.velocityY = 0;
     if(jump=0){
-      jump=1
+      jump=1;
     }
   }
   //Horizontal Movement
