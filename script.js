@@ -132,6 +132,8 @@ function checkTrash() {
 
     if (touching) {
       trash.element.remove();
+      score++;                         
+      document.getElementById('score').innerText = "Trash Collected: " + score; 
       return false;
     }
     return true;
