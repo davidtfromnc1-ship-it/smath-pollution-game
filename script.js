@@ -16,11 +16,11 @@ let keys = {
   w: false
 };
 const platforms = [
-  { x: 0, y: 400, width: 2000, height: 20 },
-  { x: 320, y: 200, width: 150, height: 20 },
-  { x: 240, y: 350, width: 200, height: 20 },
-  { x: 160, y: 120, width: 150, height: 20 },
-  { x: 80, y: 220, width: 120, height: 20 }
+  { x: 0, y: 600, width: 2000, height: 20 },
+  { x: 320, y: 500, width: 150, height: 20 },
+  { x: 240, y: 400, width: 200, height: 20 },
+  { x: 160, y: 300, width: 150, height: 20 },
+  { x: 80, y: 200, width: 120, height: 20 }
 ];
 
 const trashTypes = [
@@ -160,12 +160,7 @@ function update() {
   jelly.velocityY += gravity;
   jelly.y += jelly.velocityY;
 
-  // Ground collision
-  if (jelly.y > 400) {
-    jelly.y = 400;
-    jelly.velocityY = 0;
-    jump = 1;
-  }
+
 
   // Jump
 
