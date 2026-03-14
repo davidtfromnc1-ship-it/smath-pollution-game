@@ -3,7 +3,7 @@ const gravity = 0.5;
 let jump = 0;
 let score = 0;
 let jelly = {
-  x: 700,
+  x: 1000,
   y: 550,
   velocityY: 0,
   velocityX: 0,
