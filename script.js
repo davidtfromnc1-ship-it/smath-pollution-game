@@ -55,13 +55,6 @@ function checkPlatforms() {
       }
     }
   }
-  const buffer = 2; // pixels
-// Top collision
-if (jelly.velocityY > 0 && jellyBottom - jelly.velocityY <= platform.y + buffer) {
-  jelly.y = platform.y - jelly.height;
-  jelly.velocityY = 0;
-  jump = 1;
-}
 }
 
 
