@@ -4,14 +4,15 @@ let jelly = {
   x: 100,
   y: 100,
   velocityY: 0,
+  velocityX: 0,
   image: jellyImg
 }
 
 document.addEventListener('keydown', function(event) {
   if (event.key === 'a') {
-    jelly.x -= 10;
+    jelly.velocityX -= 10;
   } else if (event.key === 'd') {
-    jelly.x += 10;
+    jelly.velocityX += 10;
   } else if (event.key === 'w') {
     jelly.velocityY -= 10;
   }
@@ -19,12 +20,16 @@ document.addEventListener('keydown', function(event) {
   jelly.image.style.top = jelly.y +'px';
 });
 function update() {
+  //Gravity
   jelly.velocityY += gravity;
   jelly.y += jelly.velocityY;
   if (jelly.y > 400) {
     jelly.y = 400;
     jelly.velocityY = 0;
   }
+  //Horizontal Movement
+  jelly.velocityX += jelly.velocityX;
+  jelly.velocityX *=0.9
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
   requestAnimationFrame(update);
