@@ -30,6 +30,7 @@ const trashTypes = [
   "assets/6-ring.png",
   "assets/bottle.png",
   "assets/plastic.png"
+  "assets/cap.png"
 ];
 
 let trashItems = [];
