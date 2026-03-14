@@ -1,6 +1,18 @@
 const jellyImg = document.getElementById('jellyfish');
 const gravity = 0.5;
 let jump = 1;
+let jelly = {
+  x: 100,
+  y: 100,
+  velocityY: 0,
+  velocityX: 0,
+  image: jellyImg
+};
+let keys = {
+  a: false,
+  d: false,
+  w: false
+};
 const platforms = [
   { x: 50, y: 300, width: 200, height: 20 },
   { x: 300, y: 200, width: 150, height: 20 },
@@ -55,18 +67,7 @@ for (let p of platforms) {
 }
 const buffer = 2;
 if (jelly.y + jelly.height >= p.y - buffer && jelly.y + jelly.height <= p.y + buffer && jelly.velocityY >= 0) { ... }
-let jelly = {
-  x: 100,
-  y: 100,
-  velocityY: 0,
-  velocityX: 0,
-  image: jellyImg
-};
-let keys = {
-  a: false,
-  d: false,
-  w: false
-};
+
 
 drawPlatforms()
 
