@@ -1,17 +1,24 @@
-const jelly = document.getElementById('box');
-let jellyx = 100;
-let jellyy = 100;
+const jellyImg = document.getElementById('box');
+const gravity = 0.5;
+let jelly = {
+  x: 100,
+  y: 100,
+  velocityY: 0,
+  image: jellyImg
+}
+
 
 document.addEventListener('keydown', function(event) {
   if (event.key === 'a') {
-    jellyx -= 10;
+    jelly.x -= 100;
   } else if (event.key === 'd') {
-    jellyx += 10;
+    jelly.x += 100;
   } else if (event.key === 'w') {
-    jellyy -= 10;
+    jelly.y -= 100;
   } else if (event.key === 's') {
-    jellyy += 10;
+    jelly.y += 100;
   }
-  jelly.style.left = jellyx + 'px';
-  jelly.style.top = jellyy -10 +'px';
+  jelly.image.style.left = jelly.x + 'px';
+  jelly.image.style.top = jelly.y +'px';
 });
+
