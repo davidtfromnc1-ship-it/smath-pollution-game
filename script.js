@@ -1,6 +1,7 @@
 const jellyImg = document.getElementById('jellyfish');
 const gravity = 0.5;
 let jump = 0;
+let score = 0;
 let jelly = {
   x: 100,
   y: 100,
