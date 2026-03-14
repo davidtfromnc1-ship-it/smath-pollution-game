@@ -19,7 +19,18 @@ const platforms = [
   { x: 50, y: 300, width: 200, height: 20 },
   { x: 300, y: 200, width: 150, height: 20 },
   { x: 500, y: 350, width: 200, height: 20 }
+ { x: 200, y: 120, width: 150, height: 20 },
+  { x: 600, y: 220, width: 120, height: 20 }
 ];
+
+const trashTypes = [
+  "assets/6-ring.png",
+  "assets/bottle.png",
+  "assets/plastic.png"
+];
+
+let trashItems = [];
+
 function checkPlatforms() {
   for (let platform of platforms) {
     // Horizontal and vertical overlap
@@ -56,7 +67,39 @@ function checkPlatforms() {
     }
   }
 }
+function spawnTrash() {
+  for (let i = 0; i < 4; i++) {
+    const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
+    let x, y;
 
+    if (Math.random() < 0.6) {
+      const p = platforms[Math.floor(Math.random() * platforms.length)];
+      x = p.x + Math.random() * (p.width - 30);
+      y = p.y - 30;
+    } else {
+      x = Math.random() * 700;
+      y = 420;
+    }
+
+    const img = document.createElement("img");
+    img.src = type;
+    img.style.position = "absolute";
+    img.style.width = "30px";
+    img.style.height = "30px";
+    img.style.left = x + "px";
+    img.style.top = y + "px";
+
+    document.body.appendChild(img);
+
+    trashItems.push({
+      x: x,
+      y: y,
+      width: 30,
+      height: 30,
+      element: img
+    });
+  }
+}
 
 function drawPlatforms() {
   platforms.forEach(p => {
@@ -74,9 +117,29 @@ function drawPlatforms() {
     }
   });
 }
+function checkTrash() {
+  trashItems = trashItems.filter(trash => {
+    const jellyRight = jelly.x + jelly.width;
+    const jellyBottom = jelly.y + jelly.height;
+    const trashRight = trash.x + trash.width;
+    const trashBottom = trash.y + trash.height;
 
+    const touching =
+      jellyRight > trash.x &&
+      jelly.x < trashRight &&
+      jellyBottom > trash.y &&
+      jelly.y < trashBottom;
 
-drawPlatforms()
+    if (touching) {
+      trash.element.remove();
+      return false;
+    }
+    return true;
+  });
+}
+
+drawPlatforms();
+spawnTrash();
 
 document.addEventListener('keydown', (event) => {
   if (event.key in keys) keys[event.key] = true;
