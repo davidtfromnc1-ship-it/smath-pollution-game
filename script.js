@@ -34,8 +34,8 @@ function update() {
   jelly.y += jelly.velocityY;
   if (jelly.y > 400) {
     jelly.y = 400;
-    jelly.velocityY === 0;
-    if(jump=0){
+    jelly.velocityY = 0;
+    if(jump === 0){
       jump=1;
     }
   }
