@@ -16,11 +16,11 @@ let keys = {
   w: false
 };
 const platforms = [
-  { x: 0, y: 600, width: 2000, height: 20 },
-  { x: 320, y: 500, width: 150, height: 20 },
-  { x: 240, y: 400, width: 200, height: 20 },
-  { x: 160, y: 300, width: 150, height: 20 },
-  { x: 80, y: 200, width: 120, height: 20 }
+  { x: 0, y: 600, width: 2000, height: 200 },
+  { x: 320, y: 500, width: 30, height: 50 },
+  { x: 240, y: 400, width: 50, height: 40 },
+  { x: 160, y: 300, width: 40, height: 50 },
+  { x: 80, y: 200, width: 30, height: 60 }
 ];
 
 const trashTypes = [
