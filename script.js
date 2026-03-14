@@ -106,7 +106,7 @@ function update() {
 
   // Jump
   if (keys.w && jump > 0) {
-    jelly.velocityY = -10;
+    jelly.velocityY = -13;
     jump -= 1;
     keys.w = false;
   }
