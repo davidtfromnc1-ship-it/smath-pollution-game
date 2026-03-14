@@ -28,7 +28,6 @@ function update() {
     jelly.velocityY = 0;
   }
   //Horizontal Movement
-  jelly.velocityX += jelly.velocityX;
   jelly.velocityX = jelly.velocityX*0.8;
   jelly.x += jelly.velocityX;
   jelly.image.style.left = jelly.x + 'px';
