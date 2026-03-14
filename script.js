@@ -1,4 +1,4 @@
-let score = 10
+let score = 15
 let health = 20
 
 function spawnTrash(){
