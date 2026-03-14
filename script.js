@@ -22,7 +22,7 @@ document.addEventListener('keydown', function(event) {
 });
 
 document.addEventListener('keydown', function(event) {
-if (event.key === 'w') {
+if (event.key === 'w' && jump ==1) {
     jelly.velocityY -= 10;
     jump = 0;
   }
