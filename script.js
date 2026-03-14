@@ -29,7 +29,7 @@ const platforms = [
 const trashTypes = [
   "assets/6-ring.png",
   "assets/bottle.png",
-  "assets/plastic.png"
+  "assets/plastic.png",
   "assets/cap.png"
 ];
 
