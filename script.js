@@ -55,7 +55,7 @@ drawPlatforms()
 
 document.addEventListener('keydown', function(event) {
 if (event.key === 'w' && jump >= 1) {
-    jelly.velocityY -= 13;
+    jelly.velocityY -= 11;
     jump -= 1;
   }
 });
@@ -68,8 +68,8 @@ document.addEventListener('keyup', (event) => {
   
 function update() {
   // Horizontal movement acceleration
-  if (keys.a) jelly.velocityX -= 0.6;
-  if (keys.d) jelly.velocityX += 0.6;
+  if (keys.a) jelly.velocityX -= 0.55;
+  if (keys.d) jelly.velocityX += 0.55;
   jelly.velocityX *= 0.9;
   jelly.x += jelly.velocityX;
 
