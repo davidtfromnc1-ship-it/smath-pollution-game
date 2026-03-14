@@ -120,25 +120,49 @@ function drawPlatforms() {
 }
 function checkTrash() {
   trashItems = trashItems.filter(trash => {
-    const jellyRight = jelly.x + jelly.width;
+      const jellyRight = jelly.x + jelly.width;
     const jellyBottom = jelly.y + jelly.height;
-    const trashRight = trash.x + trash.width;
-    const trashBottom = trash.y + trash.height;
+    const trashRight = parseFloat(trash.element.style.left) + trash.width;
+    const trashBottom = parseFloat(trash.element.style.top) + trash.height;
 
     const touching =
-      jellyRight > trash.x &&
+      jellyRight > parseFloat(trash.element.style.left) &&
       jelly.x < trashRight &&
-      jellyBottom > trash.y &&
+      jellyBottom > parseFloat(trash.element.style.top) &&
       jelly.y < trashBottom;
 
     if (touching) {
       trash.element.remove();
-      score++;                         
-      document.getElementById('score').innerText = "Trash Collected: " + score; 
+      score++;
+      document.getElementById('score').innerText = "Trash Collected: " + score;
       return false;
     }
     return true;
   });
+}
+
+function update() {
+  if (keys.a) jelly.velocityX -= 0.55;
+  if (keys.d) jelly.velocityX += 0.55;
+  jelly.velocityX *= 0.9;
+  jelly.x += jelly.velocityX;
+
+  jelly.velocityY += gravity;
+  jelly.y += jelly.velocityY;
+
+  if (keys.w && jump > 0 && jelly.velocityY < 4) {
+    jelly.velocityY = -11;
+    jump -= 1;
+    keys.w = false;
+  }
+
+  jelly.image.style.left = jelly.x + 'px';
+  jelly.image.style.top = jelly.y + 'px';
+
+  checkPlatforms();
+  checkTrash();  // make sure this is called every frame
+
+  requestAnimationFrame(update);
 }
 
 drawPlatforms();
