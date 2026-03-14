@@ -8,40 +8,20 @@ const platforms = [
 ];
 function checkPlatforms() {
   for (let platform of platforms) {
-    // Horizontal and vertical overlap
-    const jellyRight = jelly.x + jelly.width;
-    const jellyBottom = jelly.y + jelly.height;
-    const platformRight = platform.x + platform.width;
-    const platformBottom = platform.y + platform.height;
-
-    // Check if jellyfish is overlapping the platform
-    if (jellyRight > platform.x && jelly.x < platformRight &&
-        jellyBottom > platform.y && jelly.y < platformBottom) {
-
-      // ---- Top collision (landing on platform) ----
-      if (jelly.velocityY > 0 && jellyBottom - jelly.velocityY <= platform.y) {
-        jelly.y = platform.y - jelly.height;
-        jelly.velocityY = 0;
-        jump = 1;
-      }
-      // ---- Bottom collision (hitting underside of platform) ----
-      else if (jelly.velocityY < 0 && jelly.y - jelly.velocityY >= platformBottom) {
-        jelly.y = platformBottom;
-        jelly.velocityY = 0;
-      }
-      // ---- Left side collision ----
-      else if (jelly.velocityX > 0 && jellyRight - jelly.velocityX <= platform.x) {
-        jelly.x = platform.x - jelly.width;
-        jelly.velocityX = 0;
-      }
-      // ---- Right side collision ----
-      else if (jelly.velocityX < 0 && jelly.x - jelly.velocityX >= platformRight) {
-        jelly.x = platformRight;
-        jelly.velocityX = 0;
-      }
+    // Check if jellyfish is falling onto the platform
+    if (
+      jelly.y + jelly.image.height >= platform.y && // bottom of jelly >= top of platform
+      jelly.y + jelly.image.height <= platform.y + platform.height && // prevent sticking from below
+      jelly.x + jelly.image.width > platform.x && // jelly right past left side
+      jelly.x < platform.x + platform.width // jelly left before right side
+    ) {
+      jelly.y = platform.y - jelly.image.height; // place on top
+      jelly.velocityY = 0;
+      jump = 1; // reset jump
     }
   }
 }
+
 checkPlatforms()
 function drawPlatforms() {
   platforms.forEach(p => {
