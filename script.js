@@ -13,5 +13,5 @@ document.addEventListener('keydown', function(event) {
     jellyy += 10;
   }
   jelly.style.left = jellyx + 'px';
-  jelly.style.top = jellyy +'px';
+  jelly.style.top = jellyy -10 +'px';
 });
