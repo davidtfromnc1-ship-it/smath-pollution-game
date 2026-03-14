@@ -8,25 +8,16 @@ let jelly = {
   image: jellyImg
 }
 
-document.addEventListener('keydown', function(event) {
+function update() {
   if (event.key === 'a') {
     jelly.velocityX -= 5;
   }
-});
-
-document.addEventListener('keydown', function(event) {
+  if (event.key === 'w') {
+    jelly.velocityY -= 10;
+  }
   if (event.key === 'd') {
     jelly.velocityX += 5;
   }
-});
-
-document.addEventListener('keydown', function(event) {
-if (event.key === 'w') {
-    jelly.velocityY -= 10;
-  }
-});
-
-function update() {
   //Gravity
   jelly.velocityY += gravity;
   jelly.y += jelly.velocityY;
