@@ -6,6 +6,8 @@ let jelly = {
   y: 100,
   velocityY: 0,
   velocityX: 0,
+  width: 50,   // match your HTML image
+  height: 50,
   image: jellyImg
 };
 let keys = {
@@ -76,13 +78,6 @@ function drawPlatforms() {
 
 drawPlatforms()
 
-
-document.addEventListener('keydown', function(event) {
-if (event.key === 'w' && jump >= 1) {
-    jelly.velocityY -= 11;
-    jump -= 1;
-  }
-});
 document.addEventListener('keydown', (event) => {
   if (event.key in keys) keys[event.key] = true;
 });
@@ -91,6 +86,12 @@ document.addEventListener('keyup', (event) => {
 });
   
 function update() {
+  const buffer = 2; // 2 pixels
+if (jellyBottom >= platform.y - buffer && jellyBottom <= platform.y + buffer && jelly.velocityY >= 0) {
+    jelly.y = platform.y - jelly.height;
+    jelly.velocityY = 0;
+    jump = 1;
+}
   // Horizontal movement acceleration
   if (keys.a) jelly.velocityX -= 0.55;
   if (keys.d) jelly.velocityX += 0.55;
@@ -100,9 +101,6 @@ function update() {
   // Gravity
   jelly.velocityY += gravity;
   jelly.y += jelly.velocityY;
-
-  // Check collision with platforms
-  checkPlatforms();
 
   // Ground collision
   if (jelly.y > 400) {
