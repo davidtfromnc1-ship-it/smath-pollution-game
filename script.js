@@ -10,18 +10,14 @@ let jelly = {
   y: 550,
   velocityY: 0,
   velocityX: 0,
-  width: 50,   // match your HTML image
+  width: 50,
   height: 50,
   image: jellyImg
 };
-let facingLeft = true; // initial direction
+let facingLeft = true;
 
+let keys = { a: false, d: false, w: false };
 
-let keys = {
-  a: false,
-  d: false,
-  w: false
-};
 const platforms = [
   { x: 0, y: 600, width: 2000, height: 200 },
   { x: 320, y: 500, width: 30, height: 50 },
@@ -43,40 +39,31 @@ let trashItems = [];
 
 function checkPlatforms() {
   for (let platform of platforms) {
-    // Horizontal and vertical overlap
     const jellyRight = jelly.x + jelly.width;
     const jellyBottom = jelly.y + jelly.height;
     const platformRight = platform.x + platform.width;
     const platformBottom = platform.y + platform.height;
 
-    // Check if jellyfish is overlapping the platform
     if (jellyRight > platform.x && jelly.x < platformRight &&
         jellyBottom > platform.y && jelly.y < platformBottom) {
-
-      // ---- Top collision (landing on platform) ----
       if (jelly.velocityY > 0 && jellyBottom - jelly.velocityY <= platform.y) {
         jelly.y = platform.y - jelly.height;
         jelly.velocityY = 0;
         jump = 1;
-      }
-      // ---- Bottom collision (hitting underside of platform) ----
-      else if (jelly.velocityY < 0 && jelly.y - jelly.velocityY >= platformBottom) {
+      } else if (jelly.velocityY < 0 && jelly.y - jelly.velocityY >= platformBottom) {
         jelly.y = platformBottom;
         jelly.velocityY = 0;
-      }
-      // ---- Left side collision ----
-      else if (jelly.velocityX > 0 && jellyRight - jelly.velocityX <= platform.x) {
+      } else if (jelly.velocityX > 0 && jellyRight - jelly.velocityX <= platform.x) {
         jelly.x = platform.x - jelly.width;
         jelly.velocityX = 0;
-      }
-      // ---- Right side collision ----
-      else if (jelly.velocityX < 0 && jelly.x - jelly.velocityX >= platformRight) {
+      } else if (jelly.velocityX < 0 && jelly.x - jelly.velocityX >= platformRight) {
         jelly.x = platformRight;
         jelly.velocityX = 0;
       }
     }
   }
 }
+
 function spawnSingleTrash() {
   const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
   const x = Math.random() * 770;
@@ -100,11 +87,9 @@ function spawnSingleTrash() {
     velocityY: 0
   });
 
-  // Schedule the next trash to spawn at a random interval (0.5s to 3s)
   const nextSpawn = Math.random() * 2500 + 500;
   setTimeout(spawnSingleTrash, nextSpawn);
 }
-
 
 function drawPlatforms() {
   platforms.forEach(p => {
@@ -122,11 +107,10 @@ function drawPlatforms() {
     }
   });
 }
-spawnSingleTrash(); 
 
 function checkTrash() {
   trashItems = trashItems.filter(trash => {
-    trash.velocityY += gravity / 50;
+    trash.velocityY += 0.023;
     trash.y += trash.velocityY;
     trash.element.style.top = trash.y + "px";
 
@@ -144,14 +128,14 @@ function checkTrash() {
     if (touching) {
       trash.element.remove();
       score++;
-      document.getElementById('score').innerText = "Score: " + score;
+      document.getElementById('score').innerText = "Trash Collected: " + score;
       return false;
     }
 
-    if (trash.y > 800) {
+    if (trash.y > 500) {
       trash.element.remove();
-      score--; // lose point if trash hits the ground
-      document.getElementById('score').innerText = "Score: " + score;
+      score--; 
+      document.getElementById('score').innerText = "Trash Collected: " + score;
       return false;
     }
 
@@ -161,33 +145,56 @@ function checkTrash() {
 
 function attack() {
   atkcooldown = 0;
-
   const original = jelly.image.src;
-
   jelly.image.src = jellyAtk;
-
-  // make attack longer
   jelly.image.style.width = "120px";
-  if(facingLeft == true){
+  if(facingLeft){
     jelly.x -= 50;
     leftatk = 1;
   }
 
   setTimeout(() => {
     jelly.image.src = original;
-
     jelly.image.style.width = "50px";
     jelly.width = 50;
-    if(leftatk ==1){
-    jelly.x +=50;
-    leftatk =0;
+    if(leftatk == 1){
+      jelly.x += 50;
+      leftatk = 0;
     }
   }, 360);
 
-  setTimeout(() => {
-    atkcooldown = 1;
-  }, 500);
+  setTimeout(() => { atkcooldown = 1; }, 500);
 }
+
+function jellyTalk(text, duration = 2000) {
+  let bubble = document.createElement("div");
+  bubble.innerText = text;
+  bubble.style.position = "absolute";
+  bubble.style.left = (jelly.x + jelly.width / 2) + "px";
+  bubble.style.top = (jelly.y - 30) + "px";
+  bubble.style.backgroundColor = "rgba(255,255,255,0.9)";
+  bubble.style.border = "2px solid #000";
+  bubble.style.borderRadius = "10px";
+  bubble.style.padding = "5px 10px";
+  bubble.style.fontFamily = "Arial, sans-serif";
+  bubble.style.fontSize = "14px";
+  bubble.style.color = "#000";
+  bubble.style.whiteSpace = "nowrap";
+  bubble.style.transform = "translateX(-50%)";
+  bubble.style.zIndex = 1000;
+  document.body.appendChild(bubble);
+
+  let followInterval = setInterval(() => {
+    bubble.style.left = (jelly.x + jelly.width / 2) + "px";
+    bubble.style.top = (jelly.y - 30) + "px";
+  }, 16);
+
+  setTimeout(() => {
+    clearInterval(followInterval);
+    bubble.remove();
+  }, duration);
+}
+
 function update() {
   if (jelly.velocityX > 0) facingLeft = false;
   if (jelly.velocityX < 0) facingLeft = true;
@@ -207,71 +214,20 @@ function update() {
 
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
-// Flip horizontally based on direction
-if (facingLeft) {
-  jelly.image.style.transform = "scaleX(1)";
-} else {
-  jelly.image.style.transform = "scaleX(-1)";
-}
+  jelly.image.style.transform = facingLeft ? "scaleX(1)" : "scaleX(-1)";
   checkPlatforms();
-  checkTrash(); // <- call it here every frame
-
+  checkTrash();
   requestAnimationFrame(update);
 }
-spawnTrash();
-
-document.addEventListener('keydown', (event) => {
-  if (event.key in keys) keys[event.key] = true;
-});
-document.addEventListener('keyup', (event) => {
-  if (event.key in keys) keys[event.key] = false;
-});
-
- jelly.image.style.left = jelly.x + 'px';
-jelly.image.style.top = jelly.y + 'px';
-
-
 
 drawPlatforms();
+spawnSingleTrash();
 update();
 
-function jellyTalk(text, duration = 2000) {
-  let bubble = document.createElement("div");
-  bubble.innerText = text;
-  
-  bubble.style.position = "absolute";
-  bubble.style.left = (jelly.x + jelly.width / 2) + "px";
-  bubble.style.top = (jelly.y - 30) + "px"; // above jellyfish
-  bubble.style.backgroundColor = "rgba(255,255,255,0.9)";
-  bubble.style.border = "2px solid #000";
-  bubble.style.borderRadius = "10px";
-  bubble.style.padding = "5px 10px";
-  bubble.style.fontFamily = "Arial, sans-serif";
-  bubble.style.fontSize = "14px";
-  bubble.style.color = "#000";
-  bubble.style.whiteSpace = "nowrap";
-  bubble.style.transform = "translateX(-50%)"; // center above jelly
-  bubble.style.zIndex = 1000;
-  
-  document.body.appendChild(bubble);
-
-  // Update bubble position every frame to follow jellyfish
-  let followInterval = setInterval(() => {
-    bubble.style.left = (jelly.x + jelly.width / 2) + "px";
-    bubble.style.top = (jelly.y - 30) + "px";
-  }, 16); // ~60fps
-
-  // Remove after duration
-  setTimeout(() => {
-    clearInterval(followInterval);
-    bubble.remove();
-  }, duration);
-}
-
-// --- Example usage ---
-// Make jellyfish say something when player left-clicks
-document.addEventListener("mousedown", (event) => {
-  if (event.button === 0 && atkcooldown ==1) {
+document.addEventListener('keydown', (event) => { if (event.key in keys) keys[event.key] = true; });
+document.addEventListener('keyup', (event) => { if (event.key in keys) keys[event.key] = false; });
+document.addEventListener('mousedown', (event) => {
+  if (event.button === 0 && atkcooldown === 1) {
     jellyTalk("Glub glub! Cleaning up!", 2500);
     attack();
   }
