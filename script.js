@@ -5,7 +5,7 @@ let jump = 0;
 let score = 50;
 let atkcooldown = 1;
 let leftatk = 0;
-
+let room = 1;
 let jelly = {
   x: 200,
   y: 550,
@@ -225,6 +225,25 @@ function update() {
   checkPlatforms();
   checkTrash(false);
   requestAnimationFrame(update);
+
+  if(jelly.x > 800 && jelly.x <1000 && jelly.y >600 && jelly.y <800 && jelly.velocityY >0){
+    room = 2;
+  }
+  if(room == 1){
+    window.scrollTo(0,0);
+  } else if (room === 2){
+    window.scrollTo(0,600);
+  }
+
+
+
+
+
+
+
+
+
+  
 }
 
 drawPlatforms();
