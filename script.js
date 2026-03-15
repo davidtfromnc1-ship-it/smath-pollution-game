@@ -31,7 +31,7 @@ const platforms = [
   { x: 400, y: 1500, width: 800, height: 100 },
   { x: 600, y: 1400, width: 700, height: 110 },
   { x: 90, y: 1700, width: 300, height: 110 },
-  { x: 200, y: 1600, width: 200, height: 110 },
+  { x: 130, y: 1600, width: 150, height: 110 },
 ];
 
 let jelly = {
