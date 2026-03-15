@@ -71,6 +71,7 @@ if((trashBoss.x - jelly.x)**2 < 40000 && action == 0){
   }
 }
 if (action == 1){
+  const originalboss = trashBoss.image.src;
   if(trashBoss.x > jelly.x){
     trashBoss.scaleX = -1;
   } else {
@@ -78,17 +79,18 @@ if (action == 1){
   }
   trashBoss.image.src = trashjump;
   trashBoss.velocityY = -10;
-  setTimeout(() => { trashBoss.image.src = trashB; }, 100);
+  setTimeout(() => { trashBoss.image.src = originalboss; }, 100);
   setTimeout(() => { action = 0; }, 200);
 } else if (action == 2){
+  const originalboss = trashBoss.image.src;
   trashBoss.image.src = trashwalk;
   if (trashBoss.x < jelly.x){
     trashBoss.velocityX = 2;
-    setTimeout(() => { trashBoss.image.src = trashB; }, 100);
+    setTimeout(() => { trashBoss.image.src = originalboss; }, 100);
     setTimeout(() => { action = 0; }, 200);
   } else {
     trashBoss.velocityX = -2;
-    setTimeout(() => { trashBoss.image.src = trashB; }, 100);
+    setTimeout(() => { trashBoss.image.src = originalboss; }, 100);
     setTimeout(() => { action = 0; }, 200);
   }
 } else {
