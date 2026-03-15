@@ -144,7 +144,7 @@ function checkTrash() {
       return false;
     }
 
-    if (trash.y > 500) {
+    if (trash.y > 600) {
       trash.element.remove();
       score--; // lose point if trash hits the ground
       document.getElementById('score').innerText = "Score: " + score;
