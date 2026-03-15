@@ -28,12 +28,12 @@ const platforms = [
   { x: 1200, y: 400, width: 150, height: 1000 },
   { x: 1300, y: 500, width: 150, height: 850 },
   { x: 1400, y: 600, width: 150, height: 600 },
-  { x: 0, y: 1800, width: 2000, height: 200 },
+  { x: 0, y: 1800, width: 2400, height: 200 },
   { x: 400, y: 1500, width: 800, height: 100 },
   { x: 600, y: 1400, width: 700, height: 110 },
   { x: 90, y: 1700, width: 300, height: 110 },
   { x: 130, y: 1600, width: 150, height: 110 },
-  { x: 1800, y: 0, width: 100, height: 2000 },
+  { x: 2400, y: 0, width: 100, height: 2000 },
   { x: 1100, y: 1300, width: 150, height: 110 },
 ];
 
