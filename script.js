@@ -6,7 +6,7 @@ let score = 50;
 let atkcooldown = 1;
 let leftatk = 0;
 let room = 1;
-let action =-1;
+let action =0;
 let canmove = 1;
 let jelly = {
   x: 200,
