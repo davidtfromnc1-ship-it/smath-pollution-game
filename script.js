@@ -16,15 +16,15 @@ let jelly = {
   image: jellyImg
 };
 const trashB = document.getElementById('trashboss');
-const trashjump = "assets/attack.gif";
-const trashwalk = "assets/attack.gif";
+const trashjump = "assets/nobackgroundleap.gif";
+const trashwalk = "assets/nobackgroundwalk.gif";
 let trashBoss = {
   x: 200,
   y: 550,
   velocityY: 0,
   velocityX: 0,
-  width: 50,
-  height: 50,
+  width: 500,
+  height: 500,
   image: trashB
 };
 
