@@ -75,34 +75,29 @@ function checkPlatforms() {
   }
 }
 function spawnTrash() {
-  const spawnPlatforms = platforms.filter(p => p.y >= 200 && p.y <= 600); 
-  // Only the ground and the 4 levitating platforms
+  const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
+  const x = Math.random() * 770; // 800px screen minus 30px width
+  const y = -30; // start above the screen
 
-  for (let i = 0; i < 10; i++) {
-    const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
-    const p = spawnPlatforms[Math.floor(Math.random() * spawnPlatforms.length)];
-    const x = p.x + Math.random() * (p.width - 30); // leave 30px for width
-    const y = p.y - 30; // put it on top of the platform
+  const img = document.createElement("img");
+  img.src = type;
+  img.style.position = "absolute";
+  img.style.width = "30px";
+  img.style.height = "30px";
+  img.style.left = x + "px";
+  img.style.top = y + "px";
+  document.body.appendChild(img);
 
-    const img = document.createElement("img");
-    img.src = type;
-    img.style.position = "absolute";
-    img.style.width = "30px";
-    img.style.height = "30px";
-    img.style.left = x + "px";
-    img.style.top = y + "px";
-
-    document.body.appendChild(img);
-
-    trashItems.push({
-      x: x,
-      y: y,
-      width: 30,
-      height: 30,
-      element: img
-    });
-  }
+  trashItems.push({
+    x: x,
+    y: y,
+    width: 30,
+    height: 30,
+    element: img,
+    velocityY: 0
+  });
 }
+
 
 function drawPlatforms() {
   platforms.forEach(p => {
@@ -122,17 +117,19 @@ function drawPlatforms() {
 }
 function checkTrash() {
   trashItems = trashItems.filter(trash => {
+    trash.velocityY += gravity;
+    trash.y += trash.velocityY;
+    trash.element.style.top = trash.y + "px";
+
     const jellyRight = jelly.x + jelly.width;
     const jellyBottom = jelly.y + jelly.height;
-    const trashLeft = trash.element.offsetLeft;
-    const trashTop = trash.element.offsetTop;
-    const trashRight = trashLeft + trash.width;
-    const trashBottom = trashTop + trash.height;
+    const trashRight = trash.x + trash.width;
+    const trashBottom = trash.y + trash.height;
 
     const touching =
-      jellyRight > trashLeft &&
+      jellyRight > trash.x &&
       jelly.x < trashRight &&
-      jellyBottom > trashTop &&
+      jellyBottom > trash.y &&
       jelly.y < trashBottom;
 
     if (touching) {
@@ -141,6 +138,13 @@ function checkTrash() {
       document.getElementById('score').innerText = "Trash Collected: " + score;
       return false;
     }
+
+    // remove trash if it falls below the screen
+    if (trash.y > 500) {
+      trash.element.remove();
+      return false;
+    }
+
     return true;
   });
 }
@@ -177,16 +181,4 @@ if (facingRight) {
 }
 
 drawPlatforms();
-spawnTrash();
-
-document.addEventListener('keydown', (event) => {
-  if (event.key in keys) keys[event.key] = true;
-});
-document.addEventListener('keyup', (event) => {
-  if (event.key in keys) keys[event.key] = false;
-});
- jelly.image.style.left = jelly.x + 'px';
-jelly.image.style.top = jelly.y + 'px';
-
-
 update();
