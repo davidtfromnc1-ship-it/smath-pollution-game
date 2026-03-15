@@ -299,61 +299,37 @@ function update() {
     window.scrollTo(0,600);
   }
 
-if((trashBoss.x - jelly.x)**2 < 40000 && action == 0){
-  decision = Math.random();
-  if(decision < 0.01){
-    action = 1;
-  } else if (decision < 0.05){
-    action = 2;
-  } else {
-    action = 0;
-  }
-}else if((trashBoss.x - jelly.x)**2 < 160000 && action == 0){
-  decision = Math.random();
-  if(decision < 0.025){
-    action = 1;
-  } else if (decision < 0.025){
-    action = 2;
-  } else {
-    action = 0;
-  }
-  
-} else if(action ==0) {
-  decision = Math.random();
-  if(decision < 0.05){
-    action = 1;
-  } else if (decision < 0.01){
-    action = 2;
-  } else {
-    action = 0;
-  }
+// --- Trash Boss AI ---
+if (action === 0) {
+    let dist = trashBoss.x - jelly.x;
+    let absDist = Math.abs(dist);
+
+    let decision = Math.random();
+    if (absDist < 200) { // close
+        if (decision < 0.01) action = 1; // jump
+        else if (decision < 0.05) action = 2; // walk
+    } else if (absDist < 400) { // mid distance
+        if (decision < 0.025) action = 1;
+        else if (decision < 0.05) action = 2;
+    } else { // far
+        if (decision < 0.05) action = 1;
+        else if (decision < 0.01) action = 2;
+    }
 }
-if (action == 1){
-  const originalboss = trashBoss.image.src;
-  if(trashBoss.x > jelly.x){
-    trashBoss.scaleX = -1;
-  } else {
-    trashBoss.scaleX = 1;
-  }
-  trashBoss.image.src = trashjump;
-  trashBoss.velocityY = -10;
-  setTimeout(() => { trashBoss.image.src = originalboss; }, 100);
-  setTimeout(() => { action = 0; }, 200);
-} else if (action == 2){
-  const originalboss = trashBoss.image.src;
-  trashBoss.image.src = trashwalk;
-  if (trashBoss.x < jelly.x){
-    trashBoss.velocityX = 2;
-    setTimeout(() => { trashBoss.image.src = originalboss; }, 100);
-    setTimeout(() => { action = 0; }, 200);
-  } else {
-    trashBoss.velocityX = -2;
-    setTimeout(() => { trashBoss.image.src = originalboss; }, 100);
-    setTimeout(() => { action = 0; }, 200);
-  }
+
+if (action === 1) { // jump
+    const original = trashBoss.image.src;
+    trashBoss.image.src = trashjump;
+    trashBoss.velocityY = -10;
+    setTimeout(() => { trashBoss.image.src = original; action = 0; }, 200);
+} else if (action === 2) { // walk toward jelly
+    const original = trashBoss.image.src;
+    trashBoss.image.src = trashwalk;
+    if (trashBoss.x < jelly.x) trashBoss.velocityX = 2;
+    else trashBoss.velocityX = -2;
+    setTimeout(() => { trashBoss.image.src = original; action = 0; }, 200);
 } else {
-  trashBoss.image.src = trashwalk;
-  trashBoss.velocityX = 0;
+    trashBoss.velocityX = 0;
 }
 
 
