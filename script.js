@@ -12,13 +12,14 @@ let canmove = 0;
 let damageCooldown = 0; 
 
 const platforms = [
-  { x: 0, y: 0, width: 100, height: 1400 },
+  { x: 0, y: 0, width: 100, height: 1800 },
   { x: 1200, y: 0, width: 100, height: 150 },
   { x: 1200, y: 300, width: 100, height: 1000 },
   { x: 0, y: 600, width: 1200, height: 100 },
   { x: 1000, y: 600, width: 400, height: 100 },
   { x: 1, y: 0, width: 1200, height: 100 },
-  { x: 0, y: 1200, width: 1400, height: 100 },
+  { x: 0, y: 1200, width: 700, height: 100 },
+  { x: 900, y: 1200, width: 500, height: 100 },
   { x: 100, y: 100, width: 500, height: 400 },
   { x: 1000, y: 500, width:100, height: 100 },
   { x: 800, y: 400, width: 100, height: 80 },
@@ -26,6 +27,7 @@ const platforms = [
   { x: 1200, y: 400, width: 150, height: 1000 },
   { x: 1300, y: 500, width: 150, height: 850 },
   { x: 1400, y: 600, width: 150, height: 600 },
+  { x: 0, y: 1800, width: 2000, height: 200 },
 ];
 
 let jelly = {
