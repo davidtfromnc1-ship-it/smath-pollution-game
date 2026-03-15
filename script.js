@@ -197,12 +197,22 @@ function checkTrash(attacking = false) {
       jellyBottom > trash.y &&
       jelly.y < trashBottom;
 
-    if (touching && attacking) {
-      trash.element.remove();
-      score2 += 1;  // increase jelly's health by 1
-      if (score2 > 100) score2 = 100; // optional max health cap
-      document.getElementById('score2').innerText = "Jelly Health: " + score2;
-      return false;
+    if (touching) {
+      if (attacking) {
+        trash.element.remove();
+        score2 += 1;  // gain 1 health
+        if (score2 > 100) score2 = 100; // optional max health
+        document.getElementById('score2').innerText = "Jelly Health: " + score2;
+        return false;
+      } else {
+        // damage when touching without attacking
+        if (damageCooldown <= 0) {
+          score2 -= 1;
+          if (score2 < 0) score2 = 0;
+          document.getElementById('score2').innerText = "Jelly Health: " + score2;
+          damageCooldown = 1000; // 1 second cooldown
+        }
+      }
     }
 
     if (trash.y > 1250) {
@@ -213,7 +223,6 @@ function checkTrash(attacking = false) {
     return true;
   });
 }
-
 
 function attack() {
   atkcooldown = 0;
