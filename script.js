@@ -262,4 +262,5 @@ document.addEventListener("mousedown", (event) => {
     jellyTalk("Glub glub! Cleaning up!", 2500);
     attack();
   }
-});
+})
+};
