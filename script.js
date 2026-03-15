@@ -158,7 +158,7 @@ function attack() {
   jelly.image.src = jellyAtk;
 
   // make attack longer
-  jelly.image.style.width = "120px";
+  jelly.image.style.width = "100px";
   jelly.width = 120;
 
   setTimeout(() => {
