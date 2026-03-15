@@ -122,7 +122,7 @@ setInterval(spawnTrash, 9000);
 
 function checkTrash() {
   trashItems = trashItems.filter(trash => {
-    trash.velocityY += gravity / 5;
+    trash.velocityY += gravity / 15;
     trash.y += trash.velocityY;
     trash.element.style.top = trash.y + "px";
 
