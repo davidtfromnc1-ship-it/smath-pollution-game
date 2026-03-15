@@ -184,17 +184,7 @@ function checkTrash(attacking = false) {
     const jellyBottom = jelly.y + jelly.height;
     const trashRight = trash.x + trash.width;
     const trashBottom = trash.y + trash.height;
-    const touchingBoss =
-        jellyRight > trashBoss.x &&
-        jelly.x < bossRight &&
-        jellyBottom > trashBoss.y &&
-        jelly.y < bossBottom;
     
-    if (touchingBoss) {
-        score -= 5;
-        if(score < 0) score = 0; // prevent negative score
-        document.getElementById('score').innerText = "Trash Collected: " + score;
-    }
     const touching =
       jellyRight > trash.x &&
       jelly.x < trashRight &&
@@ -276,7 +266,22 @@ function update() {
   if (jelly.velocityX > 0) facingLeft = false;
   if (jelly.velocityX < 0) facingLeft = true;
   if (keys.a) jelly.velocityX -= 3; //Should be 0.55
-
+  const jellyRight = jelly.x + jelly.width;
+  const jellyBottom = jelly.y + jelly.height;
+  const bossRight = trashBoss.x + trashBoss.width;
+  const bossBottom = trashBoss.y + trashBoss.height;
+  
+  const touchingBoss =
+      jellyRight > trashBoss.x &&
+      jelly.x < bossRight &&
+      jellyBottom > trashBoss.y &&
+      jelly.y < bossBottom;
+  
+  if (touchingBoss) {
+      score -= 5;
+      if (score < 0) score = 0; // prevent negative score
+      document.getElementById('score').innerText = "Trash Collected: " + score;
+  }
   if (keys.d) jelly.velocityX += 3; //Should be 0.55
   jelly.velocityX *= 0.9;
   jelly.x += jelly.velocityX;
