@@ -15,8 +15,22 @@ let jelly = {
   height: 50,
   image: jellyImg
 };
-let facingLeft = false;
+const trashB = document.getElementById('jellyfish');
+const trashjump = "assets/attack.gif";
+const trashwalk = "assets/attack.gif";
+let trashBoss = {
+  x: 200,
+  y: 550,
+  velocityY: 0,
+  velocityX: 0,
+  width: 50,
+  height: 50,
+  image: jellyImg
+};
 
+
+
+let facingLeft = false;
 let keys = { a: false, d: false, w: false };
 
 const platforms = [
