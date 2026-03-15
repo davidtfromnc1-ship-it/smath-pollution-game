@@ -1,5 +1,5 @@
 const jellyImg = document.getElementById('jellyfish');
-const jellyAtk = document.getElementById('attackgif');
+const jellyAtk = "assets/jelly-attack.gif";
 const gravity = 0.5;
 let jump = 0;
 let score = 0;
@@ -150,7 +150,11 @@ function checkTrash() {
   });
 }
 function attack() {
-  jellyfish.image.src= jellyAtk.src;
+  const original = jelly.image.src;  // save normal sprite
+  jelly.image.src = jellyAtk;         // switch to attack
+  setTimeout(() => {
+    jelly.image.src = original;       // revert after 0.2s
+  }, 200);
 }
 function update() {
   if (jelly.velocityX > 0) facingRight = false;
