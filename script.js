@@ -3,6 +3,7 @@ const jellyAtk = "assets/attack.gif";
 const gravity = 0.5;
 let jump = 0;
 let score = 50;
+let score2 = 50;
 let atkcooldown = 1;
 let leftatk = 0;
 let room = 1;
