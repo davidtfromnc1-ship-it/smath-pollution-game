@@ -6,7 +6,8 @@ let score = 50;
 let atkcooldown = 1;
 let leftatk = 0;
 let room = 1;
-let action =0;
+let action =-1;
+let canmove = false;
 let jelly = {
   x: 200,
   y: 550,
@@ -300,10 +301,12 @@ function update() {
     window.scrollTo(0,0);
   } else if (room === 2){
     window.scrollTo(0,600);
+    canmove=true;
   }
+  
 
 // --- Trash Boss AI ---
-if (action === 0) {
+if (action === 0 && canmove) {
     let dist = trashBoss.x - jelly.x;
     let absDist = Math.abs(dist);
 
