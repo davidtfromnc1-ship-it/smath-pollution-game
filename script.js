@@ -152,18 +152,26 @@ function checkTrash() {
 }
 function attack() {
   atkcooldown = 0;
-  jelly.image.width = 100;
-  jelly.image.height = 100;
-  const original = jelly.image.src;  // save normal sprite
-  jelly.image.src = jellyAtk;         // switch to attack
-  setTimeout(() => {
-    jelly.image.src = original;       // revert after 0.2s
-    jelly.image.width = 50;
-    jelly.image.height = 50;
-  }, 360);
-  setTimeout(() => {atkcooldown =1;
-  }, 500)
 
+  const original = jelly.image.src;
+
+  jelly.image.src = jellyAtk;
+  jelly.image.width = 120;
+
+  if (facingRight) {
+    jelly.image.style.transform = "scaleX(1)";
+  } else {
+    jelly.image.style.transform = "scaleX(-1)";
+  }
+
+  setTimeout(() => {
+    jelly.image.src = original;
+    jelly.image.width = 50;
+  }, 360);
+
+  setTimeout(() => {
+    atkcooldown = 1;
+  }, 500);
 }
 function update() {
   if (jelly.velocityX > 0) facingRight = false;
