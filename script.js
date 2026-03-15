@@ -210,11 +210,7 @@ document.addEventListener('keydown', (event) => {
 document.addEventListener('keyup', (event) => {
   if (event.key in keys) keys[event.key] = false;
 });
-document.addEventListener('mousedown', (event) => {
-  if (event.button === 0 && atkcooldown == 1) { // 0 = left mouse button
-    attack();
-  }
-});
+
  jelly.image.style.left = jelly.x + 'px';
 jelly.image.style.top = jelly.y + 'px';
 
