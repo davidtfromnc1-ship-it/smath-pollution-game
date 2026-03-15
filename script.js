@@ -1,5 +1,5 @@
 const jellyImg = document.getElementById('jellyfish');
-const jellyAtk = "assets/jelly-attack.gif";
+const jellyAtk = "assets/attackgif.gif";
 const gravity = 0.5;
 let jump = 0;
 let score = 0;
