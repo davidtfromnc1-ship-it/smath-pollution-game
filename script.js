@@ -253,10 +253,6 @@ function update() {
   jelly.image.style.top = jelly.y + 'px';
   trashBoss.image.style.left = trashBoss.x + "px";
   trashBoss.image.style.top = trashBoss.y + "px";
-  window.scrollTo(
--1000,
--1000
-);
 
   jelly.image.style.transform = facingLeft ? "scaleX(1)" : "scaleX(-1)";
   checkPlatforms(jelly);
