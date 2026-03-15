@@ -24,7 +24,7 @@ const platforms = [
   { x: 800, y: 400, width: 100, height: 80 },
   { x: 1050, y: 300, width: 80, height: 50 },
   { x: 1200, y: 400, width: 150, height: 1000 },
-  { x: 1350, y: 550, width: 150, height: 850 },
+  { x: 1350, y: 500, width: 150, height: 850 },
   { x: 1500, y: 600, width: 150, height: 600 },
 ];
 
