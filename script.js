@@ -5,6 +5,10 @@ let jump = 0;
 let score = 50;
 let atkcooldown = 1;
 let leftatk = 0;
+window.scrollTo(
+0,
+0
+);
 let jelly = {
   x: 1000,
   y: 550,
@@ -215,10 +219,7 @@ function update() {
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
 
-  window.scrollTo(
-  jelly.x - window.innerWidth / 2,
-  jelly.y - window.innerHeight / 2
-);
+
   jelly.image.style.transform = facingLeft ? "scaleX(1)" : "scaleX(-1)";
   checkPlatforms();
   checkTrash(false);
