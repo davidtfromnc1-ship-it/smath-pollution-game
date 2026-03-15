@@ -306,7 +306,7 @@ function update() {
   
 
 // --- Trash Boss AI ---
-if (action === 0 && canmove) {
+if (action === 0 && canmove ==true) {
     let dist = trashBoss.x - jelly.x;
     let absDist = Math.abs(dist);
 
