@@ -147,7 +147,7 @@ function checkTrash(attacking = false) {
       return false;
     }
 
-    if (trash.y > 1500) {
+    if (trash.y > 1400) {
       trash.element.remove();
       return false;
     }
