@@ -6,8 +6,8 @@ let score = 50;
 let atkcooldown = 1;
 let leftatk = 0;
 window.scrollTo(
--500,
--500
+500,
+500
 );
 let jelly = {
   x: 1000,
