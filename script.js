@@ -73,27 +73,6 @@ let trashBoss = {
 };
 
 
-
-//Hitboxs
-function drawHitbox(entity, color = 'red') {
-    if (!entity.hitboxDiv) {
-        const div = document.createElement('div');
-        div.style.position = 'absolute';
-        div.style.border = `2px dashed ${color}`;
-        div.style.backgroundColor = 'rgba(255,0,0,0.1)';
-        div.style.pointerEvents = 'none';
-        document.body.appendChild(div);
-        entity.hitboxDiv = div;
-    }
-
-    div = entity.hitboxDiv;
-    div.style.left = (entity.x + entity.hitbox.offsetX) + 'px';
-    div.style.top = (entity.y + entity.hitbox.offsetY) + 'px';
-    div.style.width = entity.hitbox.width + 'px';
-    div.style.height = entity.hitbox.height + 'px';
-}
-
-
 let facingLeft = false;
 let keys = { a: false, d: false, w: false };
 
