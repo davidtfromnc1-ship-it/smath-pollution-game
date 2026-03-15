@@ -197,8 +197,9 @@ function checkTrash(attacking = false) {
 
     if (touching && attacking) {
       trash.element.remove();
-      score += 2;
-      document.getElementById('score').innerText = "Trash Collected: " + score;
+      score2 += 1;  // increase jelly's health by 1
+      if (score2 > 100) score2 = 100; // optional max health cap
+      document.getElementById('score2').innerText = "Jelly Health: " + score2;
       return false;
     }
 
