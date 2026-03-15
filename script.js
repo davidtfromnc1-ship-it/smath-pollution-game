@@ -411,8 +411,8 @@ function update() {
     window.scrollTo(0,1200);
   } 
   
-if (trashCounter >= 10){
-  platforms.add({ x: 1100, y: 1300, width: 150, height: 110 },);
+if (trashCollected >= 10){
+  platforms.push({ x: 1100, y: 1300, width: 150, height: 110 },);
 }
 
 if (action === 0 && canmove === 1) {
