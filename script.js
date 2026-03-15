@@ -179,6 +179,17 @@ if (facingRight) {
 
   requestAnimationFrame(update);
 }
+spawnTrash();
+
+document.addEventListener('keydown', (event) => {
+  if (event.key in keys) keys[event.key] = true;
+});
+document.addEventListener('keyup', (event) => {
+  if (event.key in keys) keys[event.key] = false;
+});
+ jelly.image.style.left = jelly.x + 'px';
+jelly.image.style.top = jelly.y + 'px';
+
 
 drawPlatforms();
 update();
