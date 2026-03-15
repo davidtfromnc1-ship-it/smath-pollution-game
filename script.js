@@ -28,8 +28,9 @@ const platforms = [
   { x: 1300, y: 500, width: 150, height: 850 },
   { x: 1400, y: 600, width: 150, height: 600 },
   { x: 0, y: 1800, width: 2000, height: 200 },
-  { x: 400, y: 1600, width: 800, height: 100 },
-  { x: 600, y: 1500, width: 700, height: 110 },
+  { x: 400, y: 1500, width: 800, height: 100 },
+  { x: 600, y: 1400, width: 700, height: 110 },
+  { x: 100, y: 1700, width: 300, height: 110 },
 ];
 
 let jelly = {
