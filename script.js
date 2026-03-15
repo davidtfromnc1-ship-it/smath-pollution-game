@@ -408,6 +408,7 @@ function update() {
 if (trashCollected >= 10 && platformActivated ==0 ){
   platforms.push({ x: 1100, y: 1300, width: 150, height: 110 },);
   platformActivated =1;
+  drawPlatforms();
 }
 
 if (action === 0 && canmove === 1) {
