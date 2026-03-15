@@ -20,14 +20,10 @@ let facingLeft = true;
 let keys = { a: false, d: false, w: false };
 
 const platforms = [
-  { x: 0, y: 600, width: 2000, height: 200 },
-  { x: 0, y: 10, width: 200, height: 600 },
-  { x: 320, y: 500, width: 30, height: 50 },
-  { x: 240, y: 400, width: 50, height: 40 },
-  { x: 260, y: 300, width: 40, height: 50 },
-  { x: 380, y: 200, width: 30, height: 60 },
-  { x: 600, y: -400, width: 2000, height: 900 },
-  { x: 1200, y: -400, width: 2000, height: 1200 }
+  { x: 0, y: 0, width: 10, height: 1400 },
+  { x: 1400, y: 0, width: 10, height: 1400 },
+  { x: 10, y: 600, width: 1400, height: 0 },
+  { x: 10, y: 0, width: 1400, height: 0 },
 ];
 const trashTypes = [
   "assets/6-ring.png",
