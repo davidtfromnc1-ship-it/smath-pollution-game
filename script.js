@@ -217,8 +217,8 @@ function update() {
   jelly.image.style.top = jelly.y + 'px';
 
   window.scrollTo(
-1000,
-1000
+-1000,
+-1000
 );
 
   jelly.image.style.transform = facingLeft ? "scaleX(1)" : "scaleX(-1)";
