@@ -34,7 +34,6 @@ const platforms = [
   { x: 90, y: 1700, width: 300, height: 110 },
   { x: 130, y: 1600, width: 150, height: 110 },
   { x: 2400, y: 0, width: 100, height: 2000 },
-  { x: 1100, y: 1300, width: 150, height: 110 }
   
 ];
 
