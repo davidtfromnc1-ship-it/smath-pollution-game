@@ -122,7 +122,7 @@ setInterval(spawnTrash, 3000);
 
 function checkTrash() {
   trashItems = trashItems.filter(trash => {
-    trash.velocityY += 0.07; // super slow fall
+    trash.velocityY += gravity / 3;
     trash.y += trash.velocityY;
     trash.element.style.top = trash.y + "px";
 
@@ -140,18 +140,21 @@ function checkTrash() {
     if (touching) {
       trash.element.remove();
       score++;
-      document.getElementById('score').innerText = "Trash Collected: " + score;
+      document.getElementById('score').innerText = "Score: " + score;
       return false;
     }
 
-    if (trash.y > 500) { // remove trash if it falls below screen
+    if (trash.y > 500) {
       trash.element.remove();
+      score--; // lose point if trash hits the ground
+      document.getElementById('score').innerText = "Score: " + score;
       return false;
     }
 
     return true;
   });
 }
+
 function attack() {
   atkcooldown = 0;
 
