@@ -119,7 +119,7 @@ function drawPlatforms() {
 }
 function checkTrash() {
   trashItems = trashItems.filter(trash => {
-    trash.velocityY += gravity;
+    trash.velocityY += 0.2; // slower fall
     trash.y += trash.velocityY;
     trash.element.style.top = trash.y + "px";
 
@@ -141,7 +141,6 @@ function checkTrash() {
       return false;
     }
 
-    // remove trash if it falls below the screen
     if (trash.y > 500) {
       trash.element.remove();
       return false;
