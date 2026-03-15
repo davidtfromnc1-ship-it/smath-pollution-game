@@ -15,7 +15,7 @@ let jelly = {
   height: 50,
   image: jellyImg
 };
-const trashB = document.getElementById('jellyfish');
+const trashB = document.getElementById('trashboss');
 const trashjump = "assets/attack.gif";
 const trashwalk = "assets/attack.gif";
 let trashBoss = {
