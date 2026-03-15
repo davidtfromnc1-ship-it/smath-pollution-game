@@ -437,12 +437,6 @@ function loseGame(){
   document.getElementById("endText").innerText = "Game Over!";
   document.getElementById("endScreen").style.display = "flex";
 }
-
-
-
-
-drawHitbox(jelly, 'blue');      
-drawHitbox(trashBoss, 'red');
   
 }
 
