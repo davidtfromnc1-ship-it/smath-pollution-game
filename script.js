@@ -24,8 +24,8 @@ let trashBoss = {
   y: 850,
   velocityY: 0,
   velocityX: 0,
-  width: 500,
-  height: 350,
+  width: 300,
+  height: 250,
   image: trashB
 };
 
