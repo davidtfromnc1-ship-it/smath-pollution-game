@@ -11,13 +11,6 @@ let action =0;
 let canmove = 0;
 let trashCollected = 0;
 let damageCooldown = 0; 
-let attackHitbox = {
-  x: 0,
-  y: 0,
-  width: 70,
-  height: 40,
-  active: false
-};
 
 const platforms = [
   { x: 0, y: 0, width: 100, height: 1800 },
@@ -263,31 +256,26 @@ function attack() {
   const original = jelly.image.src;
   jelly.image.src = jellyAtk;
   jelly.image.style.width = "120px";
-  attackHitbox.active = true;
-
-if (facingLeft) {
-  attackHitbox.x = jelly.x - attackHitbox.width;
-} else {
-  attackHitbox.x = jelly.x + jelly.width;
-}
-
-attackHitbox.y = jelly.y + 5;
+  if(facingLeft){
+    jelly.x -= 50;
+    leftatk = 1;
+  }
   jellyTalk("Glub glub!", 1500); 
 
 
   checkTrash(true);
 
 
-  const atkRight = attackHitbox.x + attackHitbox.width;
-  const atkBottom = attackHitbox.y + attackHitbox.height;
+  const jellyRight = jelly.x + jelly.width;
+  const jellyBottom = jelly.y + jelly.height;
   const bossRight = trashBoss.x + trashBoss.width;
   const bossBottom = trashBoss.y + trashBoss.height;
 
   const hittingBoss =
-    atkRight > trashBoss.x &&
-    attackHitbox.x < trashBoss.x + trashBoss.width &&
-    atkBottom > trashBoss.y &&
-    attackHitbox.y < trashBoss.y + trashBoss.height;
+      jellyRight > trashBoss.x &&
+      jelly.x < bossRight &&
+      jellyBottom > trashBoss.y &&
+      jelly.y < bossBottom;
 
   if (hittingBoss) {
       bossHealth -= 5; 
@@ -296,7 +284,6 @@ attackHitbox.y = jelly.y + 5;
   }
 
   setTimeout(() => {
-    attackHitbox.active = false;
     jelly.image.src = original;
     jelly.image.style.width = "50px";
     jelly.width = 50;
