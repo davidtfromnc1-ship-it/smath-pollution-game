@@ -162,6 +162,11 @@ function update() {
 
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
+  if (facingRight) {
+  jelly.image.style.transform = "scaleX(1)";
+} else {
+  jelly.image.style.transform = "scaleX(-1)";
+}
 
   checkPlatforms();
   checkTrash(); // <- call it here every frame
@@ -181,10 +186,3 @@ document.addEventListener('keyup', (event) => {
 jelly.image.style.left = jelly.x + 'px';
 jelly.image.style.top = jelly.y + 'px';
 
-// Flip horizontally based on direction
-if (facingRight) {
-  jelly.image.style.transform = "scaleX(1)";
-} else {
-  jelly.image.style.transform = "scaleX(-1)";
-}
-}
