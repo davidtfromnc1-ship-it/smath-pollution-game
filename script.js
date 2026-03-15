@@ -75,15 +75,17 @@ function spawnTrash() {
   for (let i = 0; i < 10; i++) {
     const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
     let x, y;
+    let attempts = 0;
 
-    if (Math.random() < 0.6) {
-      const p = platforms[Math.floor(Math.random() * platforms.length)];
-      x = p.x + Math.random() * (p.width - 30);
-      y = p.y - 30;
-    } else {
-      x = Math.random() * 700;
-      y = 420;
-    }
+    do {
+      x = Math.random() * 770; // leave 30px buffer for trash width
+      y = Math.random() * 420; // leave 30px buffer for trash height
+      attempts++;
+      // Check if this (x, y) would be inside a platform
+    } while (platforms.some(p => 
+        x + 30 > p.x && x < p.x + p.width &&
+        y + 30 > p.y && y < p.y + p.height
+      ) && attempts < 100); // try 100 times max to avoid infinite loop
 
     const img = document.createElement("img");
     img.src = type;
