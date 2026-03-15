@@ -220,5 +220,48 @@ document.addEventListener('mousedown', (event) => {
 jelly.image.style.top = jelly.y + 'px';
 
 
+
 drawPlatforms();
 update();
+
+function jellyTalk(text, duration = 2000) {
+  let bubble = document.createElement("div");
+  bubble.innerText = text;
+  
+  bubble.style.position = "absolute";
+  bubble.style.left = (jelly.x + jelly.width / 2) + "px";
+  bubble.style.top = (jelly.y - 30) + "px"; // above jellyfish
+  bubble.style.backgroundColor = "rgba(255,255,255,0.9)";
+  bubble.style.border = "2px solid #000";
+  bubble.style.borderRadius = "10px";
+  bubble.style.padding = "5px 10px";
+  bubble.style.fontFamily = "Arial, sans-serif";
+  bubble.style.fontSize = "14px";
+  bubble.style.color = "#000";
+  bubble.style.whiteSpace = "nowrap";
+  bubble.style.transform = "translateX(-50%)"; // center above jelly
+  bubble.style.zIndex = 1000;
+  
+  document.body.appendChild(bubble);
+
+  // Update bubble position every frame to follow jellyfish
+  let followInterval = setInterval(() => {
+    bubble.style.left = (jelly.x + jelly.width / 2) + "px";
+    bubble.style.top = (jelly.y - 30) + "px";
+  }, 16); // ~60fps
+
+  // Remove after duration
+  setTimeout(() => {
+    clearInterval(followInterval);
+    bubble.remove();
+  }, duration);
+}
+
+// --- Example usage ---
+// Make jellyfish say something when player left-clicks
+document.addEventListener("mousedown", (event) => {
+  if (event.button === 0) {
+    jellyTalk("Glub glub! Cleaning up!", 2500);
+    attack();
+  }
+});
