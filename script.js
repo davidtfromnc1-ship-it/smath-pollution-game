@@ -255,7 +255,7 @@ function jellyTalk(text, duration = 2000) {
 // --- Example usage ---
 // Make jellyfish say something when player left-clicks
 document.addEventListener("mousedown", (event) => {
-  if (event.button === 0) {
+  if (event.button === 0 && atkcooldown ==1) {
     jellyTalk("Glub glub! Cleaning up!", 2500);
     attack();
   }
