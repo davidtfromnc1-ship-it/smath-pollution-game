@@ -11,8 +11,8 @@ let jelly = {
   y: 550,
   velocityY: 0,
   velocityX: 0,
-  width: 100,
-  height: 100,
+  width: 50,
+  height: 50,
   image: jellyImg
 };
 let facingLeft = false;
