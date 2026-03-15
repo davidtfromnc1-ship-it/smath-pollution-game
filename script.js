@@ -347,7 +347,13 @@ function update() {
     if (score2 < 0) score2 = 0;
     document.getElementById('score2').innerText = "Jelly Health: " + score2;
 
-    damageCooldown = 1000;    
+    damageCooldown = 1000;   
+    if(score2 <= 0){
+      loseGame();
+    if(bossHealth <= 0){
+      winGame();
+    }
+    }
   }
   if (keys.d) jelly.velocityX += 0.55;
   jelly.velocityX *= 0.9;
