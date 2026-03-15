@@ -78,10 +78,10 @@ let trashItems = [];
 function checkPlatforms(entity) {
   for (let platform of platforms) {
 
-    const entityRight = entity.x + entity.width;
-    const entityBottom = entity.y + entity.height;
-    const platformRight = platform.x + platform.width;
-    const platformBottom = platform.y + platform.height;
+    const jellyLeft = jelly.x + jelly.hitbox.offsetX;
+    const jellyTop = jelly.y + jelly.hitbox.offsetY;
+    const jellyRight = jellyLeft + jelly.hitbox.width;
+    const jellyBottom = jellyTop + jelly.hitbox.height;
 
     if (
       entityRight > platform.x &&
