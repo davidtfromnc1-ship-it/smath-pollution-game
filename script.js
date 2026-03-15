@@ -278,7 +278,7 @@ function attack() {
       jelly.y < bossBottom;
 
   if (hittingBoss) {
-      bossHealth -= 10; 
+      bossHealth -= 5; 
       if (bossHealth < 0) bossHealth = 0;
       document.getElementById('score').innerText = "Boss Health: " + bossHealth;
   }
