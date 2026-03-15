@@ -22,7 +22,8 @@ let keys = { a: false, d: false, w: false };
 const platforms = [
   { x: 0, y: 0, width: 100, height: 1400 },
   { x: 1200, y: 0, width: 100, height: 1400 },
-  { x: 0, y: 600, width: 1400, height: 100 },
+  { x: 0, y: 600, width: 800, height: 100 },
+  { x: 1000, y: 600, width: 400, height: 100 },
   { x: 1, y: 0, width: 1400, height: 100 },
 ];
 const trashTypes = [
