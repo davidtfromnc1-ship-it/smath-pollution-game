@@ -153,11 +153,13 @@ function checkTrash() {
 function attack() {
   atkcooldown = 0;
   jelly.width = 100;
+  jelly.height = 100;
   const original = jelly.image.src;  // save normal sprite
   jelly.image.src = jellyAtk;         // switch to attack
   setTimeout(() => {
     jelly.image.src = original;       // revert after 0.2s
     jelly.width = 50;
+    jelly.height = 50;
   }, 360);
   setTimeout(() => {atkcooldown =1;
   }, 500)
