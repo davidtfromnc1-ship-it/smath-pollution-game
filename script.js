@@ -2,7 +2,7 @@ const jellyImg = document.getElementById('jellyfish');
 const jellyAtk = "assets/attack.gif";
 const gravity = 0.5;
 let jump = 0;
-let score = 50;
+let score = 100;
 let score2 = 50;
 let atkcooldown = 1;
 let leftatk = 0;
@@ -222,7 +222,27 @@ function attack() {
     leftatk = 1;
   }
   jellyTalk("Glub glub!", 1500); 
-  checkTrash(true); 
+
+  // --- Check trash ---
+  checkTrash(true);
+
+  // --- Check boss collision ---
+  const jellyRight = jelly.x + jelly.width;
+  const jellyBottom = jelly.y + jelly.height;
+  const bossRight = trashBoss.x + trashBoss.width;
+  const bossBottom = trashBoss.y + trashBoss.height;
+
+  const hittingBoss =
+      jellyRight > trashBoss.x &&
+      jelly.x < bossRight &&
+      jellyBottom > trashBoss.y &&
+      jelly.y < bossBottom;
+
+  if (hittingBoss) {
+      bossHealth -= 10; // amount of damage per attack
+      if (bossHealth < 0) bossHealth = 0;
+      document.getElementById('score').innerText = "Boss Health: " + bossHealth;
+  }
 
   setTimeout(() => {
     jelly.image.src = original;
