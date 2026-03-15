@@ -410,6 +410,9 @@ if (trashCollected >= 10 && platformActivated ==0 ){
   platformActivated =1;
   drawPlatforms();
 }
+  if (trashCollected < 10 && jelly.y>1200 && jelly.x>900 && jelly.y < 1000 && jelly.x < 1300){
+    jellyTalk("I should get more trash", 2000)
+}
 
 if (action === 0 && canmove === 1) {
     let dist = trashBoss.x - jelly.x;
