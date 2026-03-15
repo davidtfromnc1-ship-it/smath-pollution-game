@@ -171,6 +171,7 @@ function attack() {
     jelly.width = 50;
     if(leftatk ==1){
     jelly.x +=50;
+    leftatk =0;
     }
   }, 360);
 
