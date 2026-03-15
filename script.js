@@ -21,7 +21,7 @@ const trashjump = "assets/nobackgroundleap.gif";
 const trashwalk = "assets/nobackgroundwalk.gif";
 let trashBoss = {
   x: 200,
-  y: 950,
+  y: 850,
   velocityY: 0,
   velocityX: 0,
   width: 500,
