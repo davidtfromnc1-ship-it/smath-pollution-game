@@ -82,42 +82,35 @@ let trashItems = [];
 
 function checkPlatforms(entity) {
   for (let platform of platforms) {
+    const left = entity.x + entity.hitbox.offsetX;
+    const top = entity.y + entity.hitbox.offsetY;
+    const right = left + entity.hitbox.width;
+    const bottom = top + entity.hitbox.height;
 
-    const jellyLeft = jelly.x + jelly.hitbox.offsetX;
-    const jellyTop = jelly.y + jelly.hitbox.offsetY;
-    const jellyRight = jellyLeft + jelly.hitbox.width;
-    const jellyBottom = jellyTop + jelly.hitbox.height;
+    const platformRight = platform.x + platform.width;
+    const platformBottom = platform.y + platform.height;
 
-    if (
-      entityRight > platform.x &&
-      entity.x < platformRight &&
-      entityBottom > platform.y &&
-      entity.y < platformBottom
-    ) {
+    if (right > platform.x &&
+        left < platformRight &&
+        bottom > platform.y &&
+        top < platformBottom) {
 
-      if (entity.velocityY > 0 && entityBottom - entity.velocityY <= platform.y) {
-        entity.y = platform.y - entity.height;
+      if (entity.velocityY > 0 && bottom - entity.velocityY <= platform.y) {
+        entity.y = platform.y - entity.hitbox.height - entity.hitbox.offsetY;
         entity.velocityY = 0;
-
-        if (entity === jelly) {
-          jump = 1; // only jelly can jump
-        }
+        if (entity === jelly) jump = 1;
 
       } else if (entity.velocityY < 0 && entity.y - entity.velocityY >= platformBottom) {
-
-        entity.y = platformBottom;
+        entity.y = platformBottom - entity.hitbox.offsetY;
         entity.velocityY = 0;
 
-      } else if (entity.velocityX > 0 && entityRight - entity.velocityX <= platform.x) {
-
-        entity.x = platform.x - entity.width;
+      } else if (entity.velocityX > 0 && right - entity.velocityX <= platform.x) {
+        entity.x = platform.x - entity.hitbox.width - entity.hitbox.offsetX;
         entity.velocityX = 0;
 
       } else if (entity.velocityX < 0 && entity.x - entity.velocityX >= platformRight) {
-
-        entity.x = platformRight;
+        entity.x = platformRight - entity.hitbox.offsetX;
         entity.velocityX = 0;
-
       }
     }
   }
