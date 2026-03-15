@@ -410,7 +410,7 @@ if (trashCollected >= 10 && platformActivated ==0 ){
   platformActivated =1;
   drawPlatforms();
 }
-  if (trashCollected < 10 && jelly.y>1200 && jelly.x>900 && jelly.y < 1000 && jelly.x < 1300){
+  if (trashCollected < 10 && jelly.y>1200 && jelly.x>900 && jelly.y < 1400 && jelly.x < 1300){
     jellyTalk("I should get more trash", 2000)
 }
 
