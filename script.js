@@ -184,7 +184,17 @@ function checkTrash(attacking = false) {
     const jellyBottom = jelly.y + jelly.height;
     const trashRight = trash.x + trash.width;
     const trashBottom = trash.y + trash.height;
-
+    const touchingBoss =
+        jellyRight > trashBoss.x &&
+        jelly.x < bossRight &&
+        jellyBottom > trashBoss.y &&
+        jelly.y < bossBottom;
+    
+    if (touchingBoss) {
+        score -= 5;
+        if(score < 0) score = 0; // prevent negative score
+        document.getElementById('score').innerText = "Trash Collected: " + score;
+    }
     const touching =
       jellyRight > trash.x &&
       jelly.x < trashRight &&
