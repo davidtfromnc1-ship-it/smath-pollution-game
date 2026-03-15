@@ -395,11 +395,11 @@ function update() {
     canmove=1;
   } else if (room === 3){
     if(jelly.y<600){
-    window.scrollTo(1200,0);
+    window.scrollTo(1400,0);
     } else if (jelly.y>=600 && y <1200){
     window.scrollTo(1200,jelly.y-600);
-    } else if (jelly.y>=1200 && y <2000){
-    window.scrollTo(1200,1200);
+    } else if (jelly.y>=1400 && y <2000){
+    window.scrollTo(1400,1200);
     }
   } else if (room === 4){
     window.scrollTo(0,1200);
