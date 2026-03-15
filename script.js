@@ -118,7 +118,7 @@ function drawPlatforms() {
     }
   });
 }
-setInterval(spawnTrash, 3000);
+setInterval(spawnTrash, 9000);
 
 function checkTrash() {
   trashItems = trashItems.filter(trash => {
@@ -144,7 +144,7 @@ function checkTrash() {
       return false;
     }
 
-    if (trash.y > 600) {
+    if (trash.y > 800) {
       trash.element.remove();
       score--; // lose point if trash hits the ground
       document.getElementById('score').innerText = "Score: " + score;
