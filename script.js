@@ -150,7 +150,7 @@ function checkPlatforms(entity) {
 
 function spawnSingleTrash() {
   const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
-  const x = Math.random() * 1000+ 200;
+  const x = Math.random() * 2400;
   const y = 100 +5;
 
   const img = document.createElement("img");
@@ -171,7 +171,7 @@ function spawnSingleTrash() {
     velocityY: 0
   });
 
-  const nextSpawn = Math.random() * 2500 + 500;
+  const nextSpawn = Math.random() * 1000 + 200;
   setTimeout(spawnSingleTrash, nextSpawn);
 }
 
