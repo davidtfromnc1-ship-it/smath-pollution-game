@@ -108,7 +108,7 @@ function drawPlatforms() {
   });
 }
 
-function checkTrash() {
+function checkTrash(attacking = false) {
   trashItems = trashItems.filter(trash => {
     trash.velocityY += 0.023;
     trash.y += trash.velocityY;
@@ -125,17 +125,15 @@ function checkTrash() {
       jellyBottom > trash.y &&
       jelly.y < trashBottom;
 
-    if (touching) {
+    if (touching && attacking) {
       trash.element.remove();
-      score++;
+      score += 2;
       document.getElementById('score').innerText = "Trash Collected: " + score;
       return false;
     }
 
     if (trash.y > 800) {
       trash.element.remove();
-      score--; 
-      document.getElementById('score').innerText = "Trash Collected: " + score;
       return false;
     }
 
@@ -153,6 +151,9 @@ function attack() {
     leftatk = 1;
   }
 
+  jellyTalk("Glub glub!", 1500);
+  checkTrash(true);
+
   setTimeout(() => {
     jelly.image.src = original;
     jelly.image.style.width = "50px";
@@ -164,35 +165,6 @@ function attack() {
   }, 360);
 
   setTimeout(() => { atkcooldown = 1; }, 500);
-}
-
-function jellyTalk(text, duration = 2000) {
-  let bubble = document.createElement("div");
-  bubble.innerText = text;
-  bubble.style.position = "absolute";
-  bubble.style.left = (jelly.x + jelly.width / 2) + "px";
-  bubble.style.top = (jelly.y - 30) + "px";
-  bubble.style.backgroundColor = "rgba(255,255,255,0.9)";
-  bubble.style.border = "2px solid #000";
-  bubble.style.borderRadius = "10px";
-  bubble.style.padding = "5px 10px";
-  bubble.style.fontFamily = "Arial, sans-serif";
-  bubble.style.fontSize = "14px";
-  bubble.style.color = "#000";
-  bubble.style.whiteSpace = "nowrap";
-  bubble.style.transform = "translateX(-50%)";
-  bubble.style.zIndex = 1000;
-  document.body.appendChild(bubble);
-
-  let followInterval = setInterval(() => {
-    bubble.style.left = (jelly.x + jelly.width / 2) + "px";
-    bubble.style.top = (jelly.y - 30) + "px";
-  }, 16);
-
-  setTimeout(() => {
-    clearInterval(followInterval);
-    bubble.remove();
-  }, duration);
 }
 
 function update() {
@@ -216,7 +188,7 @@ function update() {
   jelly.image.style.top = jelly.y + 'px';
   jelly.image.style.transform = facingLeft ? "scaleX(1)" : "scaleX(-1)";
   checkPlatforms();
-  checkTrash();
+  checkTrash(false);
   requestAnimationFrame(update);
 }
 
@@ -227,8 +199,5 @@ update();
 document.addEventListener('keydown', (event) => { if (event.key in keys) keys[event.key] = true; });
 document.addEventListener('keyup', (event) => { if (event.key in keys) keys[event.key] = false; });
 document.addEventListener('mousedown', (event) => {
-  if (event.button === 0 && atkcooldown === 1) {
-    jellyTalk("Glub glub! Cleaning up!", 2500);
-    attack();
-  }
+  if (event.button === 0 && atkcooldown === 1) attack();
 });
