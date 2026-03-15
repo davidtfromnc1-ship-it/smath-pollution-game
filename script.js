@@ -158,9 +158,8 @@ function attack() {
   jelly.image.src = jellyAtk;
 
   // make attack longer
-  jelly.image.style.width = "100px";
-  jelly.width = 120;
-  if(facingLeft = true){
+  jelly.image.style.width = "120px";
+  if(facingLeft == true){
     jelly.x -= 50;
     leftatk = 1;
   }
@@ -172,6 +171,7 @@ function attack() {
     jelly.width = 50;
     if(leftatk ==1){
     jelly.x +=50;
+    }
   }, 360);
 
   setTimeout(() => {
