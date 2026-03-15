@@ -151,6 +151,8 @@ function attack() {
     jelly.x -= 50;
     leftatk = 1;
   }
+  jellyTalk("Glub glub!", 1500); 
+  checkTrash(true); 
 
   setTimeout(() => {
     jelly.image.src = original;
@@ -215,7 +217,7 @@ function update() {
   jelly.image.style.top = jelly.y + 'px';
   jelly.image.style.transform = facingLeft ? "scaleX(1)" : "scaleX(-1)";
   checkPlatforms();
-  checkTrash();
+  checkTrash(false);
   requestAnimationFrame(update);
 }
 
@@ -226,8 +228,7 @@ update();
 document.addEventListener('keydown', (event) => { if (event.key in keys) keys[event.key] = true; });
 document.addEventListener('keyup', (event) => { if (event.key in keys) keys[event.key] = false; });
 document.addEventListener('mousedown', (event) => {
-  if (event.button === 0 && atkcooldown === 1) {
-    jellyTalk("Glub glub! Cleaning up!", 2500);
-    attack();
+ if (event.button === 0 && atkcooldown === 1) {
+    attack();  // attack now calls trash check and glub glub
   }
 });
