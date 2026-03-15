@@ -11,6 +11,9 @@ let jelly = {
   height: 50,
   image: jellyImg
 };
+let facingRight = true; // initial direction
+
+
 let keys = {
   a: false,
   d: false,
@@ -143,6 +146,8 @@ function checkTrash() {
 }
 
 function update() {
+  if (jelly.velocityX > 0) facingRight = true;
+  if (jelly.velocityX < 0) facingRight = false;
   if (keys.a) jelly.velocityX -= 0.55;
   if (keys.d) jelly.velocityX += 0.55;
   jelly.velocityX *= 0.9;
@@ -175,33 +180,14 @@ document.addEventListener('keydown', (event) => {
 document.addEventListener('keyup', (event) => {
   if (event.key in keys) keys[event.key] = false;
 });
-  
-function update() {
+ jelly.image.style.left = jelly.x + 'px';
+jelly.image.style.top = jelly.y + 'px';
 
-  // Horizontal movement acceleration
-  if (keys.a) jelly.velocityX -= 0.55;
-  if (keys.d) jelly.velocityX += 0.55;
-  jelly.velocityX *= 0.9;
-  jelly.x += jelly.velocityX;
-
-  // Gravity
-  jelly.velocityY += gravity;
-  jelly.y += jelly.velocityY;
-
-
-
-  // Jump
-
-  if (keys.w && jump > 0 && jelly.velocityY < 4) {
-    jelly.velocityY = -11;
-    jump -= 1;
-    keys.w = false;
-  }
-
-  jelly.image.style.left = jelly.x + 'px';
-  jelly.image.style.top = jelly.y + 'px';
-  checkPlatforms()
-  requestAnimationFrame(update);
+// Flip horizontally based on direction
+if (facingRight) {
+  jelly.image.style.transform = "scaleX(1)";
+} else {
+  jelly.image.style.transform = "scaleX(-1)";
+} 
 }
-
 update();
