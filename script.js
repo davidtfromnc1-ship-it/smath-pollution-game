@@ -10,11 +10,17 @@ let action =0;
 let jelly = {
   x: 200,
   y: 550,
-  velocityY: 0,
   velocityX: 0,
-  width: 50,
-  height: 50,
-  image: jellyImg
+  velocityY: 0,
+  width: 50,   // sprite width
+  height: 50,  // sprite height
+  image: jellyImg,
+  hitbox: {    // custom hitbox
+    offsetX: 10,
+    offsetY: 5,
+    width: 30,
+    height: 40
+  }
 };
 const trashB = document.getElementById('trashboss');
 const trashjump = "assets/nobackgroundleap.gif";
