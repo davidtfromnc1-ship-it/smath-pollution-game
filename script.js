@@ -28,7 +28,25 @@ let trashBoss = {
   height: 250,
   image: trashB
 };
+//Hitboxs
+function drawHitbox(entity, color = 'red') {
+    if (!entity.hitbox) {
+        // Create a div only once
+        const div = document.createElement('div');
+        div.style.position = 'absolute';
+        div.style.border = `2px dashed ${color}`;
+        div.style.backgroundColor = 'rgba(255,0,0,0.1)'; // semi-transparent
+        div.style.pointerEvents = 'none'; // so it doesn't block clicks
+        document.body.appendChild(div);
+        entity.hitbox = div;
+    }
 
+    // Update div to match entity's position and size
+    entity.hitbox.style.left = entity.x + 'px';
+    entity.hitbox.style.top = entity.y + 'px';
+    entity.hitbox.style.width = entity.width + 'px';
+    entity.hitbox.style.height = entity.height + 'px';
+}
 
 
 let facingLeft = false;
@@ -276,7 +294,8 @@ function update() {
 
 
 
-
+drawHitbox(jelly, 'blue');       // jelly in blue
+drawHitbox(trashBoss, 'red');
   
 }
 
