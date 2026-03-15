@@ -9,9 +9,11 @@ let jelly = {
   y: 550,
   velocityY: 0,
   velocityX: 0,
-  width: 500,   // match your HTML image
-  height: 500,
-  image: jellyImg
+  width: 50,   // match your HTML image
+  height: 50,
+  image: jellyImg,
+  image.width: 50,
+  image.height: 50
 };
 let facingRight = false; // initial direction
 
