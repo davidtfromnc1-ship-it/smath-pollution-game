@@ -156,7 +156,7 @@ function attack() {
   const originalHeight = jelly.image.height;
 
   // Set attack sprite
-  jelly.image.src = "assets/jelly-attack.gif";
+  jelly.image.src = jellyAtk;
   jelly.image.width = 100;  // make it longer / bigger
   jelly.image.height = 50;
 
