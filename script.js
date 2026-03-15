@@ -11,9 +11,7 @@ let jelly = {
   velocityX: 0,
   width: 50,   // match your HTML image
   height: 50,
-  image: jellyImg,
-  image.width: 50,
-  image.height: 50
+  image: jellyImg
 };
 let facingRight = false; // initial direction
 
