@@ -278,9 +278,9 @@ function update() {
       jelly.y < bossBottom;
   
   if (touchingBoss) {
-      score -= 5;
-      if (score < 0) score = 0; // prevent negative score
-      document.getElementById('score').innerText = "Trash Collected: " + score;
+      score2 -= 1;
+      if (score2 < 0) score2 = 0; // prevent negative score
+      document.getElementById('score2').innerText = "Jelly Health: " + score2;
   }
   if (keys.d) jelly.velocityX += 3; //Should be 0.55
   jelly.velocityX *= 0.9;
