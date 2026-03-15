@@ -84,11 +84,11 @@ if (action == 1){
   trashBoss.image.src = trashwalk;
   if (trashBoss.x < jelly.x){
     trashBoss.velocityX = 2;
-    setTimeout(() => { trashBoss.velocityX = 0; }, 2000);
+    setTimeout(() => { trashBoss.image.src = trashB; }, 1000);
     setTimeout(() => { action = 0; }, 2000);
   } else {
     trashBoss.velocityX = -2;
-    setTimeout(() => { trashBoss.velocityX = 0; }, 2000);
+    setTimeout(() => { trashBoss.image.src = trashB; }, 1000);
     setTimeout(() => { action = 0; }, 2000);
   }
 } else {
