@@ -309,7 +309,7 @@ function update() {
   checkTrash(false);
   requestAnimationFrame(update);
 
-  if(jelly.x > 800 && jelly.x <1000 && jelly.y >600 && jelly.y <800 && jelly.velocityY >0){
+  if(jelly.x > 100 && jelly.x <1200 && jelly.y >700 && jelly.y <1200){
     room = 2;
   }
   if(room == 1){
