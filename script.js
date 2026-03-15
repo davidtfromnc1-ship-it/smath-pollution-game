@@ -21,7 +21,7 @@ let keys = { a: false, d: false, w: false };
 
 const platforms = [
   { x: 0, y: 0, width: 50, height: 1400 },
-  { x: 1400, y: 0, width: 50, height: 1400 },
+  { x: 1200, y: 0, width: 50, height: 1400 },
   { x: 10, y: 600, width: 1400, height: 50 },
   { x: 10, y: 0, width: 1400, height: 50 },
 ];
