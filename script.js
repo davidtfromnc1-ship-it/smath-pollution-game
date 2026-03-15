@@ -66,13 +66,13 @@ function checkPlatforms() {
 function spawnSingleTrash() {
   const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
   const x = Math.random() * 770;
-  const y = -30;
+  const y = 100 +5;
 
   const img = document.createElement("img");
   img.src = type;
   img.style.position = "absolute";
-  img.style.width = "30px";
-  img.style.height = "30px";
+  img.style.width = "40px";
+  img.style.height = "40px";
   img.style.left = x + "px";
   img.style.top = y + "px";
   document.body.appendChild(img);
