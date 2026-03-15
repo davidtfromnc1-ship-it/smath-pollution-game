@@ -51,28 +51,44 @@ const trashTypes = [
 
 let trashItems = [];  
 
-function checkPlatforms() {
+function checkPlatforms(entity) {
   for (let platform of platforms) {
-    const jellyRight = jelly.x + jelly.width;
-    const jellyBottom = jelly.y + jelly.height;
+
+    const entityRight = entity.x + entity.width;
+    const entityBottom = entity.y + entity.height;
     const platformRight = platform.x + platform.width;
     const platformBottom = platform.y + platform.height;
 
-    if (jellyRight > platform.x && jelly.x < platformRight &&
-        jellyBottom > platform.y && jelly.y < platformBottom) {
-      if (jelly.velocityY > 0 && jellyBottom - jelly.velocityY <= platform.y) {
-        jelly.y = platform.y - jelly.height;
-        jelly.velocityY = 0;
-        jump = 1;
-      } else if (jelly.velocityY < 0 && jelly.y - jelly.velocityY >= platformBottom) {
-        jelly.y = platformBottom;
-        jelly.velocityY = 0;
-      } else if (jelly.velocityX > 0 && jellyRight - jelly.velocityX <= platform.x) {
-        jelly.x = platform.x - jelly.width;
-        jelly.velocityX = 0;
-      } else if (jelly.velocityX < 0 && jelly.x - jelly.velocityX >= platformRight) {
-        jelly.x = platformRight;
-        jelly.velocityX = 0;
+    if (
+      entityRight > platform.x &&
+      entity.x < platformRight &&
+      entityBottom > platform.y &&
+      entity.y < platformBottom
+    ) {
+
+      if (entity.velocityY > 0 && entityBottom - entity.velocityY <= platform.y) {
+        entity.y = platform.y - entity.height;
+        entity.velocityY = 0;
+
+        if (entity === jelly) {
+          jump = 1; // only jelly can jump
+        }
+
+      } else if (entity.velocityY < 0 && entity.y - entity.velocityY >= platformBottom) {
+
+        entity.y = platformBottom;
+        entity.velocityY = 0;
+
+      } else if (entity.velocityX > 0 && entityRight - entity.velocityX <= platform.x) {
+
+        entity.x = platform.x - entity.width;
+        entity.velocityX = 0;
+
+      } else if (entity.velocityX < 0 && entity.x - entity.velocityX >= platformRight) {
+
+        entity.x = platformRight;
+        entity.velocityX = 0;
+
       }
     }
   }
