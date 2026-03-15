@@ -194,8 +194,6 @@ function jellyTalk(text, duration = 2000) {
     bubble.remove();
   }, duration);
 }
-jellyfish.add(camera);
-camera.position.set(0, 5, 10);
 
 function update() {
   if (jelly.velocityX > 0) facingLeft = false;
@@ -216,6 +214,11 @@ function update() {
 
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
+
+  window.scrollTo(
+  jelly.x - window.innerWidth / 2,
+  jelly.y - window.innerHeight / 2
+);
   jelly.image.style.transform = facingLeft ? "scaleX(1)" : "scaleX(-1)";
   checkPlatforms();
   checkTrash(false);
