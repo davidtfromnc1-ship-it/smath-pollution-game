@@ -27,6 +27,9 @@ const platforms = [
   { x: 600, y: -400, width: 2000, height: 900 },
   { x: 1200, y: -400, width: 2000, height: 1200 }
 ];
+platforms.children.forEach(obj =>{
+  obj.color = "red";
+});
 
 const trashTypes = [
   "assets/6-ring.png",
@@ -35,7 +38,7 @@ const trashTypes = [
   "assets/cap.png"
 ];
 
-let trashItems = [];
+let trashItems = [];  
 
 function checkPlatforms() {
   for (let platform of platforms) {
