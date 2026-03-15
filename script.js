@@ -151,20 +151,12 @@ function checkTrash() {
   });
 }
 function attack() {
-  const originalSrc = jelly.image.src;
-  const originalWidth = jelly.image.width;
-  const originalHeight = jelly.image.height;
+  // Temporarily stretch width by 2x
+  jelly.image.style.transform = "scaleX(2)";
 
-  // Set attack sprite
-  jelly.image.src = jellyAtk;
-  jelly.image.width = 100;  // make it longer / bigger
-  jelly.image.height = 50;
-
-  // Revert after animation (e.g., 300ms)
   setTimeout(() => {
-    jelly.image.src = originalSrc;
-    jelly.image.width = originalWidth;
-    jelly.image.height = originalHeight;
+    // revert
+    jelly.image.style.transform = facingRight ? "scaleX(1)" : "scaleX(-1)";
   }, 300);
 }
 function update() {
