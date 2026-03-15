@@ -36,22 +36,21 @@ let trashBoss = {
 };
 //Hitboxs
 function drawHitbox(entity, color = 'red') {
-    if (!entity.hitbox) {
-        // Create a div only once
+    if (!entity.hitboxDiv) {
         const div = document.createElement('div');
         div.style.position = 'absolute';
         div.style.border = `2px dashed ${color}`;
-        div.style.backgroundColor = 'rgba(255,0,0,0.1)'; // semi-transparent
-        div.style.pointerEvents = 'none'; // so it doesn't block clicks
+        div.style.backgroundColor = 'rgba(255,0,0,0.1)';
+        div.style.pointerEvents = 'none';
         document.body.appendChild(div);
-        entity.hitbox = div;
+        entity.hitboxDiv = div;
     }
 
-    // Update div to match entity's position and size
-    entity.hitbox.style.left = entity.x + 'px';
-    entity.hitbox.style.top = entity.y + 'px';
-    entity.hitbox.style.width = entity.width + 'px';
-    entity.hitbox.style.height = entity.height + 'px';
+    div = entity.hitboxDiv;
+    div.style.left = (entity.x + entity.hitbox.offsetX) + 'px';
+    div.style.top = (entity.y + entity.hitbox.offsetY) + 'px';
+    div.style.width = entity.hitbox.width + 'px';
+    div.style.height = entity.hitbox.height + 'px';
 }
 
 
