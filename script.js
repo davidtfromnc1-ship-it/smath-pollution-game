@@ -132,7 +132,7 @@ function checkTrash() {
       return false;
     }
 
-    if (trash.y > 500) {
+    if (trash.y > 800) {
       trash.element.remove();
       score--; 
       document.getElementById('score').innerText = "Trash Collected: " + score;
