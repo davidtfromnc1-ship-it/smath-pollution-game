@@ -194,6 +194,8 @@ function jellyTalk(text, duration = 2000) {
     bubble.remove();
   }, duration);
 }
+jellyfish.add(camera);
+camera.position.set(0, 5, 10);
 
 function update() {
   if (jelly.velocityX > 0) facingLeft = false;
