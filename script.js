@@ -149,24 +149,22 @@ function checkTrash() {
 
     return true;
   });
-}
 function attack() {
   atkcooldown = 0;
 
   const original = jelly.image.src;
 
   jelly.image.src = jellyAtk;
-  jelly.image.width = 120;
 
-  if (facingRight) {
-    jelly.image.style.transform = "scaleX(1)";
-  } else {
-    jelly.image.style.transform = "scaleX(-1)";
-  }
+  // make attack longer
+  jelly.image.width = 120;
+  jelly.width = 120;
 
   setTimeout(() => {
     jelly.image.src = original;
+
     jelly.image.width = 50;
+    jelly.width = 50;
   }, 360);
 
   setTimeout(() => {
