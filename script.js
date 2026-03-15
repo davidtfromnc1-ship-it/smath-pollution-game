@@ -239,6 +239,9 @@ function update() {
 
   jelly.velocityY += gravity;
   jelly.y += jelly.velocityY;
+  trashBoss.velocityY += gravity;
+  trashBoss.y += trashBoss.velocityY;
+  trashBoss.x += trashBoss.velocityX;
 
   if (keys.w && jump > 0 && jelly.velocityY < 4) {
     jelly.velocityY = -11;
@@ -256,7 +259,8 @@ function update() {
 );
 
   jelly.image.style.transform = facingLeft ? "scaleX(1)" : "scaleX(-1)";
-  checkPlatforms();
+  checkPlatforms(jelly);
+  checkPlatforms(trashBoss);
   checkTrash(false);
   requestAnimationFrame(update);
 
