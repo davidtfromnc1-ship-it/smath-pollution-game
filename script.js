@@ -77,30 +77,32 @@ function checkPlatforms() {
     }
   }
 }
-function spawnTrash(batch = 3) { // batch = how many trash per spawn
-  for (let i = 0; i < batch; i++) {
-    const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
-    const x = Math.random() * 770;
-    const y = -30;
+function spawnSingleTrash() {
+  const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
+  const x = Math.random() * 770;
+  const y = -30;
 
-    const img = document.createElement("img");
-    img.src = type;
-    img.style.position = "absolute";
-    img.style.width = "30px";
-    img.style.height = "30px";
-    img.style.left = x + "px";
-    img.style.top = y + "px";
-    document.body.appendChild(img);
+  const img = document.createElement("img");
+  img.src = type;
+  img.style.position = "absolute";
+  img.style.width = "30px";
+  img.style.height = "30px";
+  img.style.left = x + "px";
+  img.style.top = y + "px";
+  document.body.appendChild(img);
 
-    trashItems.push({
-      x: x,
-      y: y,
-      width: 30,
-      height: 30,
-      element: img,
-      velocityY: 0
-    });
-  }
+  trashItems.push({
+    x: x,
+    y: y,
+    width: 30,
+    height: 30,
+    element: img,
+    velocityY: 0
+  });
+
+  // Schedule the next trash to spawn at a random interval (0.5s to 3s)
+  const nextSpawn = Math.random() * 2500 + 500;
+  setTimeout(spawnSingleTrash, nextSpawn);
 }
 
 
@@ -120,7 +122,7 @@ function drawPlatforms() {
     }
   });
 }
-setInterval(() => spawnTrash(5), 3000);
+spawnSingleTrash(); 
 
 function checkTrash() {
   trashItems = trashItems.filter(trash => {
