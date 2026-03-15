@@ -77,28 +77,30 @@ function checkPlatforms() {
     }
   }
 }
-function spawnTrash() {
-  const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
-  const x = Math.random() * 770;
-  const y = -30; // start above screen
+function spawnTrash(batch = 3) { // batch = how many trash per spawn
+  for (let i = 0; i < batch; i++) {
+    const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
+    const x = Math.random() * 770;
+    const y = -30;
 
-  const img = document.createElement("img");
-  img.src = type;
-  img.style.position = "absolute";
-  img.style.width = "30px";
-  img.style.height = "30px";
-  img.style.left = x + "px";
-  img.style.top = y + "px";
-  document.body.appendChild(img);
+    const img = document.createElement("img");
+    img.src = type;
+    img.style.position = "absolute";
+    img.style.width = "30px";
+    img.style.height = "30px";
+    img.style.left = x + "px";
+    img.style.top = y + "px";
+    document.body.appendChild(img);
 
-  trashItems.push({
-    x: x,
-    y: y,
-    width: 30,
-    height: 30,
-    element: img,
-    velocityY: 0
-  });
+    trashItems.push({
+      x: x,
+      y: y,
+      width: 30,
+      height: 30,
+      element: img,
+      velocityY: 0
+    });
+  }
 }
 
 
@@ -118,7 +120,7 @@ function drawPlatforms() {
     }
   });
 }
-setInterval(spawnTrash, 9000);
+setInterval(() => spawnTrash(5), 3000);
 
 function checkTrash() {
   trashItems = trashItems.filter(trash => {
