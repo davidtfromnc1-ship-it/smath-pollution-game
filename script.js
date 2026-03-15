@@ -436,7 +436,7 @@ function winGame(){
 function loseGame(){
   document.getElementById("endText").innerText = "Game Over!";
   document.getElementById("endScreen").style.display = "flex";
-  jelly.x=10**99;
+  jelly.x=67**3.14;
 }
   
 }
