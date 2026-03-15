@@ -149,6 +149,7 @@ function checkTrash() {
 
     return true;
   });
+}
 function attack() {
   atkcooldown = 0;
 
@@ -262,5 +263,4 @@ document.addEventListener("mousedown", (event) => {
     jellyTalk("Glub glub! Cleaning up!", 2500);
     attack();
   }
-})
-};
+});
