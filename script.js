@@ -35,7 +35,7 @@ let trashBoss = {
   image: trashB,
   hitbox: {
     offsetX: 150,
-    offsetY: 50,
+    offsetY: -50,
     width: 150,
     height: 200
   }
