@@ -151,13 +151,19 @@ function checkTrash() {
   });
 }
 function attack() {
-  // Temporarily stretch width by 2x
-  jelly.image.style.transform = "scaleX(2)";
-
+  atkcooldown = 0;
+  jelly.image.width = 100;
+  jelly.image.height = 100;
+  const original = jelly.image.src;  // save normal sprite
+  jelly.image.src = jellyAtk;         // switch to attack
   setTimeout(() => {
-    // revert
-    jelly.image.style.transform = facingRight ? "scaleX(1)" : "scaleX(-1)";
-  }, 300);
+    jelly.image.src = original;       // revert after 0.2s
+    jelly.image.width = 50;
+    jelly.image.height = 50;
+  }, 360);
+  setTimeout(() => {atkcooldown =1;
+  }, 500)
+
 }
 function update() {
   if (jelly.velocityX > 0) facingRight = false;
