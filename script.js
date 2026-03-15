@@ -7,7 +7,7 @@ let atkcooldown = 1;
 let leftatk = 0;
 let room = 1;
 let action =0;
-let canmove = 1;
+let canmove = 0;
 let jelly = {
   x: 200,
   y: 550,
