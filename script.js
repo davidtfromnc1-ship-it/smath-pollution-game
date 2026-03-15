@@ -375,16 +375,35 @@ function update() {
   checkPlatforms(trashBoss);
   checkTrash(false);
   requestAnimationFrame(update);
-
+  if(jelly.x > 100 && jelly.x <1200 && jelly.y <700){
+    room = 1;
+  }
   if(jelly.x > 100 && jelly.x <1200 && jelly.y >700 && jelly.y <1200){
     room = 2;
   }
+  if(jelly.x > 1200 && jelly.x <2400 && jelly.y >0 && jelly.y <2000){
+    room = 3;
+  }
+   if(jelly.x > 100 && jelly.x <1200 && jelly.y >1200 && jelly.y <2400){
+    room = 4;
+  }
+  
   if(room == 1){
     window.scrollTo(0,0);
   } else if (room === 2){
     window.scrollTo(0,600);
     canmove=1;
-  }
+  } else if (room === 3){
+    if(jelly.y<600){
+    window.scrollTo(1200,0);
+    } else if (jelly.y>=600 && y <1200){
+    window.scrollTo(1200,jelly.y-600);
+    } else if (jelly.y>=1200 && y <2000){
+    window.scrollTo(1200,1200);
+    }
+  } else if (room === 4){
+    window.scrollTo(0,1200);
+  } 
   
 
 
