@@ -5,10 +5,7 @@ let jump = 0;
 let score = 50;
 let atkcooldown = 1;
 let leftatk = 0;
-window.scrollTo(
-1000,
-1000
-);
+
 let jelly = {
   x: 1000,
   y: 550,
@@ -219,6 +216,10 @@ function update() {
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
 
+  window.scrollTo(
+1000,
+1000
+);
 
   jelly.image.style.transform = facingLeft ? "scaleX(1)" : "scaleX(-1)";
   checkPlatforms();
