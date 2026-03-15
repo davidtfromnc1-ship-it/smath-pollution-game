@@ -398,7 +398,7 @@ function update() {
     window.scrollTo(1400,0);
     } else if (jelly.y>=600 && jelly.y <1200){
     window.scrollTo(1400,jelly.y-600);
-    } else (jelly.y>=1400 && jelly.y <2000){
+    } else if (jelly.y>=1400 && jelly.y <2000){
     window.scrollTo(1400,1200);
     }
   } else if (room === 4){
