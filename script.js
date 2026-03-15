@@ -48,7 +48,7 @@ let jelly = {
   hitbox: {  
     offsetX: 10,
     offsetY: 5,
-    width: 30,
+    width: 60,
     height: 40
   }
 };
