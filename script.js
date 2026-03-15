@@ -323,13 +323,13 @@ if (action === 1 || action ===2 && trashBoss.velocityY <-2) { // jump
     trashBoss.velocityY = -10;
     if (trashBoss.x < jelly.x) trashBoss.velocityX = 20;
     else trashBoss.velocityX = -20;
-    setTimeout(() => { trashBoss.image.src = original; action = 0; }, 400);
+    setTimeout(() => { trashBoss.image.src = original; action = 0; }, 800);
 } else if (action === 2 && trashBoss.velocityY > -2) { // walk toward jelly
     const original = trashBoss.image.src;
     trashBoss.image.src = trashwalk;
     if (trashBoss.x < jelly.x) trashBoss.velocityX = 5;
     else trashBoss.velocityX = -5;
-    setTimeout(() => { trashBoss.image.src = original; action = 0; }, 400);
+    setTimeout(() => { trashBoss.image.src = original; action = 0; }, 800);
 } else {
     trashBoss.velocityX = 0;
 }
