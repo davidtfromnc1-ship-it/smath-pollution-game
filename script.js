@@ -9,15 +9,16 @@ let leftatk = 0;
 let room = 1;
 let action =0;
 let canmove = 0;
+let damageCooldown = 0; 
 let jelly = {
   x: 200,
   y: 550,
   velocityX: 0,
   velocityY: 0,
-  width: 50,   // sprite width
-  height: 50,  // sprite height
+  width: 50,  
+  height: 50, 
   image: jellyImg,
-  hitbox: {    // custom hitbox
+  hitbox: {  
     offsetX: 10,
     offsetY: 5,
     width: 30,
@@ -277,11 +278,15 @@ function update() {
       jelly.x < bossRight &&
       jellyBottom > trashBoss.y &&
       jelly.y < bossBottom;
-  
-  if (touchingBoss) {
-      score2 -= 1;
-      if (score2 < 0) score2 = 0; // prevent negative score
-      document.getElementById('score2').innerText = "Jelly Health: " + score2;
+  if (damageCooldown > 0) {
+    damageCooldown -= 16; // approximate ms per frame (~60 FPS)
+  }
+  if (touchingBoss && damageCooldown <= 0) {
+    score2 -= 5;               // damage amount
+    if (score2 < 0) score2 = 0;
+    document.getElementById('score2').innerText = "Jelly Health: " + score2;
+
+    damageCooldown = 1000;     // 1000ms = 1 second cooldown
   }
   if (keys.d) jelly.velocityX += 3; //Should be 0.55
   jelly.velocityX *= 0.9;
