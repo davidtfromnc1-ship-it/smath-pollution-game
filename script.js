@@ -90,25 +90,30 @@ function checkPlatforms(entity) {
     const platformRight = platform.x + platform.width;
     const platformBottom = platform.y + platform.height;
 
+    // Check if hitbox overlaps the platform
     if (right > platform.x &&
         left < platformRight &&
         bottom > platform.y &&
         top < platformBottom) {
 
+      // Falling (down)
       if (entity.velocityY > 0 && bottom - entity.velocityY <= platform.y) {
         entity.y = platform.y - entity.hitbox.height - entity.hitbox.offsetY;
         entity.velocityY = 0;
         if (entity === jelly) jump = 1;
 
-      } else if (entity.velocityY < 0 && entity.y - entity.velocityY >= platformBottom) {
+      // Rising (up)
+      } else if (entity.velocityY < 0 && top - entity.velocityY >= platformBottom) {
         entity.y = platformBottom - entity.hitbox.offsetY;
         entity.velocityY = 0;
 
+      // Moving right
       } else if (entity.velocityX > 0 && right - entity.velocityX <= platform.x) {
         entity.x = platform.x - entity.hitbox.width - entity.hitbox.offsetX;
         entity.velocityX = 0;
 
-      } else if (entity.velocityX < 0 && entity.x - entity.velocityX >= platformRight) {
+      // Moving left
+      } else if (entity.velocityX < 0 && left - entity.velocityX >= platformRight) {
         entity.x = platformRight - entity.hitbox.offsetX;
         entity.velocityX = 0;
       }
