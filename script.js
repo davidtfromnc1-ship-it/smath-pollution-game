@@ -11,7 +11,7 @@ let jelly = {
   height: 50,
   image: jellyImg
 };
-let facingRight = true; // initial direction
+let facingRight = false; // initial direction
 
 
 let keys = {
@@ -146,8 +146,8 @@ function checkTrash() {
 }
 
 function update() {
-  if (jelly.velocityX > 0) facingRight = true;
-  if (jelly.velocityX < 0) facingRight = false;
+  if (jelly.velocityX > 0) facingRight = false;
+  if (jelly.velocityX < 0) facingRight = true;
   if (keys.a) jelly.velocityX -= 0.55;
   if (keys.d) jelly.velocityX += 0.55;
   jelly.velocityX *= 0.9;
