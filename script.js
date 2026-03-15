@@ -32,7 +32,13 @@ let trashBoss = {
   velocityX: 0,
   width: 300,
   height: 250,
-  image: trashB
+  image: trashB,
+  hitbox: {
+    offsetX: 100,
+    offsetY: 5,
+    width: 200,
+    height: 250
+  }
 };
 //Hitboxs
 function drawHitbox(entity, color = 'red') {
