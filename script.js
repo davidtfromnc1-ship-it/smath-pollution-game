@@ -231,7 +231,8 @@ function update() {
 
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
-
+  trashBoss.image.style.left = trashBoss.x + "px";
+  trashBoss.image.style.top = trashBoss.y + "px";
   window.scrollTo(
 -1000,
 -1000
