@@ -89,11 +89,37 @@
         z-index: 10;
         white-space: nowrap;
       }
+      #endScreen{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+        font-size: 48px;
+        z-index: 9999;
+      }
+      
+      #endScreen button{
+        margin-top: 20px;
+        font-size: 24px;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
 
     </style>
   </head>
   <body>
     <div id="title"> Task: Save the Ocean! </div>
+    <div id="endScreen">
+      <div id="endText">Game Over</div>
+      <button onclick="location.reload()">Restart</button>
+    </div>
     <div id="title2"> Task: Beat the Boss! </div>
     <div id="score">Evil Trash Health: 50</div>
     <div id="score2"> Jelly Health: 50</div>
