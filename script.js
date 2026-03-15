@@ -7,7 +7,7 @@ let atkcooldown = 1;
 let leftatk = 0;
 
 let jelly = {
-  x: 1000,
+  x: 200,
   y: 550,
   velocityY: 0,
   velocityX: 0,
@@ -15,7 +15,7 @@ let jelly = {
   height: 50,
   image: jellyImg
 };
-let facingLeft = true;
+let facingLeft = false;
 
 let keys = { a: false, d: false, w: false };
 
