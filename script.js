@@ -11,6 +11,7 @@ let action =0;
 let canmove = 0;
 let trashCollected = 0;
 let damageCooldown = 0; 
+let platformActivated = 0;
 
 const platforms = [
   { x: 0, y: 0, width: 100, height: 1800 },
@@ -404,8 +405,9 @@ function update() {
     window.scrollTo(0,1200);
   } 
   
-if (trashCollected >= 10){
+if (trashCollected >= 10 && platformActivated ==0 ){
   platforms.push({ x: 1100, y: 1300, width: 150, height: 110 },);
+  platformActivated =1;
 }
 
 if (action === 0 && canmove === 1) {
