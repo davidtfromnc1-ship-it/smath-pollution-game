@@ -154,8 +154,10 @@ function attack() {
   atkcooldown = 0;
   const original = jelly.image.src;  // save normal sprite
   jelly.image.src = jellyAtk;         // switch to attack
+  jelly.width = 100;
   setTimeout(() => {
     jelly.image.src = original;       // revert after 0.2s
+    jelly.width = 50;
   }, 360);
   setTimeout(() => {atkcooldown =1;
   }, 500)
