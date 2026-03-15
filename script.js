@@ -151,19 +151,21 @@ function checkTrash() {
   });
 }
 function attack() {
-  atkcooldown = 0;
-  jelly.width = 100;
-  jelly.height = 100;
-  const original = jelly.image.src;  // save normal sprite
-  jelly.image.src = jellyAtk;         // switch to attack
-  setTimeout(() => {
-    jelly.image.src = original;       // revert after 0.2s
-    jelly.width = 50;
-    jelly.height = 50;
-  }, 360);
-  setTimeout(() => {atkcooldown =1;
-  }, 500)
+  const originalSrc = jelly.image.src;
+  const originalWidth = jelly.image.width;
+  const originalHeight = jelly.image.height;
 
+  // Set attack sprite
+  jelly.image.src = "assets/jelly-attack.gif";
+  jelly.image.width = 100;  // make it longer / bigger
+  jelly.image.height = 50;
+
+  // Revert after animation (e.g., 300ms)
+  setTimeout(() => {
+    jelly.image.src = originalSrc;
+    jelly.image.width = originalWidth;
+    jelly.image.height = originalHeight;
+  }, 300);
 }
 function update() {
   if (jelly.velocityX > 0) facingRight = false;
