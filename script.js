@@ -240,8 +240,7 @@ function checkTrash(attacking = false) {
     }
 
     return true;
-  });
-}
+
     if (trash.y > 1250) {
       trash.element.remove();
       return false;
