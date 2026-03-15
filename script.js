@@ -72,20 +72,14 @@ function checkPlatforms() {
   }
 }
 function spawnTrash() {
+  const spawnPlatforms = platforms.filter(p => p.y >= 200 && p.y <= 600); 
+  // Only the ground and the 4 levitating platforms
+
   for (let i = 0; i < 10; i++) {
     const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
-    let x, y;
-    let attempts = 0;
-
-    do {
-      x = Math.random() * 770; // leave 30px buffer for trash width
-      y = Math.random() * 420; // leave 30px buffer for trash height
-      attempts++;
-      // Check if this (x, y) would be inside a platform
-    } while (platforms.some(p => 
-        x + 30 > p.x && x < p.x + p.width &&
-        y + 30 > p.y && y < p.y + p.height
-      ) && attempts < 100); // try 100 times max to avoid infinite loop
+    const p = spawnPlatforms[Math.floor(Math.random() * spawnPlatforms.length)];
+    const x = p.x + Math.random() * (p.width - 30); // leave 30px for width
+    const y = p.y - 30; // put it on top of the platform
 
     const img = document.createElement("img");
     img.src = type;
