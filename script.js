@@ -13,7 +13,7 @@ let jelly = {
   height: 50,
   image: jellyImg
 };
-let facingRight = false; // initial direction
+let facingLeft = true; // initial direction
 
 
 let keys = {
@@ -173,8 +173,8 @@ function attack() {
   }, 500);
 }
 function update() {
-  if (jelly.velocityX > 0) facingRight = false;
-  if (jelly.velocityX < 0) facingRight = true;
+  if (jelly.velocityX > 0) facingLeft = false;
+  if (jelly.velocityX < 0) facingLeft = true;
   if (keys.a) jelly.velocityX -= 0.55;
   if (keys.d) jelly.velocityX += 0.55;
   jelly.velocityX *= 0.9;
@@ -192,7 +192,7 @@ function update() {
   jelly.image.style.left = jelly.x + 'px';
   jelly.image.style.top = jelly.y + 'px';
 // Flip horizontally based on direction
-if (facingRight) {
+if (facingLeft) {
   jelly.image.style.transform = "scaleX(1)";
 } else {
   jelly.image.style.transform = "scaleX(-1)";
