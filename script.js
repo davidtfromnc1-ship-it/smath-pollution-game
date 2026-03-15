@@ -27,10 +27,6 @@ const platforms = [
   { x: 600, y: -400, width: 2000, height: 900 },
   { x: 1200, y: -400, width: 2000, height: 1200 }
 ];
-platforms.children.forEach(obj =>{
-  obj.color = "red";
-});
-
 const trashTypes = [
   "assets/6-ring.png",
   "assets/bottle.png",
@@ -105,7 +101,7 @@ function drawPlatforms() {
       div.style.top = p.y + 'px';
       div.style.width = p.width + 'px';
       div.style.height = p.height + 'px';
-      div.style.backgroundColor = '#2ecc71';
+      div.style.backgroundColor = '#080C3D';
       document.body.appendChild(div);
     }
   });
