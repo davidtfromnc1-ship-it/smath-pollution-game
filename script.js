@@ -149,7 +149,7 @@ function checkPlatforms(entity) {
 
 function spawnSingleTrash() {
   const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
-  const x = Math.random() * 970;
+  const x = Math.random() * 2400;
   const y = 100 +5;
 
   const img = document.createElement("img");
