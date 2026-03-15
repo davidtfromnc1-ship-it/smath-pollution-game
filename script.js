@@ -60,7 +60,7 @@ if((trashBoss.x - jelly.x)**2 < 40000 && action == 0){
     action = 0;
   }
   
-} else {
+} else if(action ==0) {
   decision = Math.random();
   if(decision < 0.05){
     action = 1;
