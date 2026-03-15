@@ -34,10 +34,10 @@ let trashBoss = {
   height: 250,
   image: trashB,
   hitbox: {
-    offsetX: 100,
-    offsetY: 5,
-    width: 200,
-    height: 250
+    offsetX: 150,
+    offsetY: 50,
+    width: 150,
+    height: 200
   }
 };
 //Hitboxs
