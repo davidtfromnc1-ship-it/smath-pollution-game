@@ -80,6 +80,7 @@ const platforms = [
   { x: 999, y: 600, width: 1200, height: 100 },
   { x: 100, y: 100, width: 500, height: 400 },
   { x: 1000, y: 500, width:100, height: 100 },
+  { x: 800, y: 400, width: 100, height: 80 },
   
 ];
 const trashTypes = [
