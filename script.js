@@ -2,7 +2,7 @@ const jellyImg = document.getElementById('jellyfish');
 const jellyAtk = "assets/attack.gif";
 const gravity = 0.5;
 let jump = 0;
-let score = 0;
+let score = 50;
 let atkcooldown = 1;
 let leftatk = 0;
 let jelly = {
@@ -108,7 +108,7 @@ function drawPlatforms() {
   });
 }
 
-function checkTrash() {
+function checkTrash(attacking = false) {
   trashItems = trashItems.filter(trash => {
     trash.velocityY += 0.023;
     trash.y += trash.velocityY;
@@ -125,23 +125,22 @@ function checkTrash() {
       jellyBottom > trash.y &&
       jelly.y < trashBottom;
 
-    if (touching) {
+    if (touching && attacking) {
       trash.element.remove();
-      score++;
+      score += 2;
       document.getElementById('score').innerText = "Trash Collected: " + score;
       return false;
     }
 
     if (trash.y > 800) {
       trash.element.remove();
-      score--; 
-      document.getElementById('score').innerText = "Trash Collected: " + score;
       return false;
     }
 
     return true;
   });
 }
+
 
 function attack() {
   atkcooldown = 0;
