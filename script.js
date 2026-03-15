@@ -9,6 +9,7 @@ let leftatk = 0;
 let room = 1;
 let action =0;
 let canmove = 0;
+let trashCollected = 0;
 let damageCooldown = 0; 
 
 const platforms = [
@@ -210,21 +211,36 @@ function checkTrash(attacking = false) {
     if (touching) {
       if (attacking) {
         trash.element.remove();
-        score2 += 2; 
-        if (score2 > 100) score2 = 100; 
+
+        score2 += 1; // heal
+        if (score2 > 100) score2 = 100;
+
+        trashCollected += 1; // track trash collected
+
         document.getElementById('score2').innerText = "Jelly Health: " + score2;
+        document.getElementById('trashCount').innerText = "Trash: " + trashCollected;
+
         return false;
       } else {
- 
         if (damageCooldown <= 0) {
           score2 -= 1;
           if (score2 < 0) score2 = 0;
+
           document.getElementById('score2').innerText = "Jelly Health: " + score2;
+
           damageCooldown = 1000;
         }
       }
     }
 
+    if (trash.y > 1250) {
+      trash.element.remove();
+      return false;
+    }
+
+    return true;
+  });
+}
     if (trash.y > 1250) {
       trash.element.remove();
       return false;
