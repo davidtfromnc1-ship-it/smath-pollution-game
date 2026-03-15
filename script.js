@@ -150,7 +150,7 @@ function checkTrash() {
   });
 }
 function attack() {
-  jellyfish.image= jellyAtk;
+  jellyfish.image.src= jellyAtk.src;
 }
 function update() {
   if (jelly.velocityX > 0) facingRight = false;
