@@ -200,8 +200,9 @@ function jellyTalk(text, duration = 2000) {
 function update() {
   if (jelly.velocityX > 0) facingLeft = false;
   if (jelly.velocityX < 0) facingLeft = true;
-  if (keys.a) jelly.velocityX -= 0.55;
-  if (keys.d) jelly.velocityX += 0.55;
+  if (keys.a) jelly.velocityX -= 3; //Should be 0.55
+
+  if (keys.d) jelly.velocityX += 3; //Should be 0.55
   jelly.velocityX *= 0.9;
   jelly.x += jelly.velocityX;
 
