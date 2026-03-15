@@ -153,8 +153,8 @@ function spawnSingleTrash() {
   trashItems.push({
     x: x,
     y: y,
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 50,
     element: img,
     velocityY: 0
   });
