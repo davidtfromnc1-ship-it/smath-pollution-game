@@ -40,6 +40,62 @@ let trashBoss = {
     height: 200
   }
 };
+
+if((trashBoss.x - jelly.x)**2 < 40000 && action == 0){
+  decision = Math.random();
+  if(decision < 0.01){
+    action = 1;
+  } else if (decision < 0.05){
+    action = 2;
+  } else {
+    action = 0;
+  }
+}else if((trashBoss.x - jelly.x)**2 < 160000 && action == 0){
+  decision = Math.random();
+  if(decision < 0.025){
+    action = 1;
+  } else if (decision < 0.025){
+    action = 2;
+  } else {
+    action = 0;
+  }
+  
+} else {
+  decision = Math.random();
+  if(decision < 0.05){
+    action = 1;
+  } else if (decision < 0.01){
+    action = 2;
+  } else {
+    action = 0;
+  }
+}
+if (action == 1){
+  if(trashBoss.x > jelly.x){
+    trashBoss.scaleX = -1;
+  } else {
+    trashBoss.scaleX = 1;
+  }
+  trashBoss.image.src = trashjump;
+  trashBoss.velocityY = -10;
+  setTimeout(() => { trashBoss.image.src = trashB; }, 1000);
+  setTimeout(() => { action = 0; }, 2000);
+} else if (action == 2){
+  trashBoss.image.src = trashwalk;
+  if (trashBoss.x < jelly.x){
+    trashBoss.velocityX = 2;
+    setTimeout(() => { trashBoss.velocityX = 0; }, 2000);
+    setTimeout(() => { action = 0; }, 2000);
+  } else {
+    trashBoss.velocityX = -2;
+    setTimeout(() => { trashBoss.velocityX = 0; }, 2000);
+    setTimeout(() => { action = 0; }, 2000);
+  }
+} else {
+  trashBoss.image.src = trashwalk;
+  trashBoss.velocityX = 0;
+}
+
 //Hitboxs
 function drawHitbox(entity, color = 'red') {
     if (!entity.hitboxDiv) {
