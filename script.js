@@ -442,7 +442,15 @@ if (action === 1 || action ===2 && trashBoss.velocityY <-2) {
     trashBoss.velocityX = 0;
 }
 
+function winGame(){
+  document.getElementById("endText").innerText = "You Saved the Ocean!";
+  document.getElementById("endScreen").style.display = "flex";
+}
 
+function loseGame(){
+  document.getElementById("endText").innerText = "Game Over!";
+  document.getElementById("endScreen").style.display = "flex";
+}
 
 
 
