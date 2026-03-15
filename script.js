@@ -3,6 +3,7 @@ const jellyAtk = "assets/attackgif.gif";
 const gravity = 0.5;
 let jump = 0;
 let score = 0;
+let atkcooldown = 1;
 let jelly = {
   x: 1000,
   y: 550,
@@ -150,11 +151,15 @@ function checkTrash() {
   });
 }
 function attack() {
+  atkcooldown = 0;
   const original = jelly.image.src;  // save normal sprite
   jelly.image.src = jellyAtk;         // switch to attack
   setTimeout(() => {
     jelly.image.src = original;       // revert after 0.2s
-  }, 200);
+  }, 360);
+  setTimeout(() => {atkcooldown =1;
+  }, 500)
+
 }
 function update() {
   if (jelly.velocityX > 0) facingRight = false;
@@ -195,7 +200,7 @@ document.addEventListener('keyup', (event) => {
   if (event.key in keys) keys[event.key] = false;
 });
 document.addEventListener('mousedown', (event) => {
-  if (event.button === 0) { // 0 = left mouse button
+  if (event.button === 0 && atkcooldown > 1) { // 0 = left mouse button
     attack();
   }
 });
