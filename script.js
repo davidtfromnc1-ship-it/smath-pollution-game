@@ -48,7 +48,7 @@ let jelly = {
   hitbox: {  
     offsetX: 10,
     offsetY: 5,
-    width: 60,
+    width: 30,
     height: 40
   }
 };
@@ -199,8 +199,8 @@ function checkTrash(attacking = false) {
     trash.y += trash.velocityY;
     trash.element.style.top = trash.y + "px";
 
-    const jellyRight = jelly.x + jelly.width;
-    const jellyBottom = jelly.y + jelly.height;
+    const jellyRight = jelly.x + jelly.width*2.5;
+    const jellyBottom = jelly.y + jelly.height*2.5;
     const trashRight = trash.x + trash.width;
     const trashBottom = trash.y + trash.height;
     
