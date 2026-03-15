@@ -4,6 +4,7 @@ const gravity = 0.5;
 let jump = 0;
 let score = 0;
 let atkcooldown = 1;
+let leftatk = 0;
 let jelly = {
   x: 1000,
   y: 550,
