@@ -79,8 +79,8 @@ function checkPlatforms() {
 }
 function spawnTrash() {
   const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
-  const x = Math.random() * 770; // 800px screen minus 30px width
-  const y = -30; // start above the screen
+  const x = Math.random() * 770;
+  const y = -30; // start above screen
 
   const img = document.createElement("img");
   img.src = type;
@@ -118,9 +118,11 @@ function drawPlatforms() {
     }
   });
 }
+setInterval(spawnTrash, 3000);
+
 function checkTrash() {
   trashItems = trashItems.filter(trash => {
-    trash.velocityY += 0.2; // slower fall
+    trash.velocityY += 0.07; // super slow fall
     trash.y += trash.velocityY;
     trash.element.style.top = trash.y + "px";
 
@@ -142,7 +144,7 @@ function checkTrash() {
       return false;
     }
 
-    if (trash.y > 500) {
+    if (trash.y > 500) { // remove trash if it falls below screen
       trash.element.remove();
       return false;
     }
