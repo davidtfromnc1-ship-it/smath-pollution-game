@@ -149,7 +149,7 @@ function checkPlatforms(entity) {
 
 function spawnSingleTrash() {
   const type = trashTypes[Math.floor(Math.random() * trashTypes.length)];
-  const x = Math.random() * 770;
+  const x = Math.random() * 970;
   const y = 100 +5;
 
   const img = document.createElement("img");
@@ -235,14 +235,7 @@ function checkTrash(attacking = false) {
       }
     }
 
-    if (trash.y > 1250) {
-      trash.element.remove();
-      return false;
-    }
-
-    return true;
-
-    if (trash.y > 1250) {
+    if (trash.y > 1750) {
       trash.element.remove();
       return false;
     }
