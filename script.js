@@ -94,10 +94,12 @@ function spawnSingleTrash() {
 
 function drawPlatforms() {
   platforms.forEach(p => {
-    const plat = document.getElementById('platform-' + p.x);
+    const id = 'platform-' + p.x + '-' + p.y;
+    const plat = document.getElementById(id);
+
     if (!plat) {
       const div = document.createElement('div');
-      div.id = 'platform-' + p.x;
+      div.id = id;
       div.style.position = 'absolute';
       div.style.left = p.x + 'px';
       div.style.top = p.y + 'px';
