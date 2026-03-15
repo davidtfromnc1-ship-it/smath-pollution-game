@@ -204,17 +204,17 @@ function checkTrash(attacking = false) {
     if (touching) {
       if (attacking) {
         trash.element.remove();
-        score2 += 1;  // gain 1 health
-        if (score2 > 100) score2 = 100; // optional max health
+        score2 += 2; 
+        if (score2 > 100) score2 = 100; 
         document.getElementById('score2').innerText = "Jelly Health: " + score2;
         return false;
       } else {
-        // damage when touching without attacking
+ 
         if (damageCooldown <= 0) {
           score2 -= 1;
           if (score2 < 0) score2 = 0;
           document.getElementById('score2').innerText = "Jelly Health: " + score2;
-          damageCooldown = 1000; // 1 second cooldown
+          damageCooldown = 1000;
         }
       }
     }
@@ -239,10 +239,10 @@ function attack() {
   }
   jellyTalk("Glub glub!", 1500); 
 
-  // --- Check trash ---
+
   checkTrash(true);
 
-  // --- Check boss collision ---
+
   const jellyRight = jelly.x + jelly.width;
   const jellyBottom = jelly.y + jelly.height;
   const bossRight = trashBoss.x + trashBoss.width;
@@ -255,7 +255,7 @@ function attack() {
       jelly.y < bossBottom;
 
   if (hittingBoss) {
-      bossHealth -= 10; // amount of damage per attack
+      bossHealth -= 10; 
       if (bossHealth < 0) bossHealth = 0;
       document.getElementById('score').innerText = "Boss Health: " + bossHealth;
   }
@@ -305,7 +305,7 @@ function jellyTalk(text, duration = 2000) {
 function update() {
   if (jelly.velocityX > 0) facingLeft = false;
   if (jelly.velocityX < 0) facingLeft = true;
-  if (keys.a) jelly.velocityX -= 0.55; //Should be 0.55
+  if (keys.a) jelly.velocityX -= 0.55; 
   const jellyRight = jelly.x + jelly.width;
   const jellyBottom = jelly.y + jelly.height;
   const bossRight = trashBoss.x + trashBoss.width;
@@ -317,16 +317,16 @@ function update() {
       jellyBottom > trashBoss.y &&
       jelly.y < bossBottom;
   if (damageCooldown > 0) {
-    damageCooldown -= 16; // approximate ms per frame (~60 FPS)
+    damageCooldown -= 16; 
   }
   if (touchingBoss && damageCooldown <= 0) {
-    score2 -= 5;               // damage amount
+    score2 -= 5;            
     if (score2 < 0) score2 = 0;
     document.getElementById('score2').innerText = "Jelly Health: " + score2;
 
-    damageCooldown = 1000;     // 1000ms = 1 second cooldown
+    damageCooldown = 1000;    
   }
-  if (keys.d) jelly.velocityX += 0.55; //Should be 0.55
+  if (keys.d) jelly.velocityX += 0.55;
   jelly.velocityX *= 0.9;
   jelly.x += jelly.velocityX;
 
@@ -364,25 +364,25 @@ function update() {
   }
   
 
-// --- Trash Boss AI ---
+
 if (action === 0 && canmove === 1) {
     let dist = trashBoss.x - jelly.x;
     let absDist = Math.abs(dist);
 
     let decision = Math.random();
-    if (absDist < 200) { // close
-        if (decision < 0.01) action = 1; // jump
-        else if (decision < 0.05) action = 2; // walk
-    } else if (absDist < 400) { // mid distance
+    if (absDist < 200) { 
+        if (decision < 0.01) action = 1; 
+        else if (decision < 0.05) action = 2; 
+    } else if (absDist < 400) { 
         if (decision < 0.025) action = 1;
         else if (decision < 0.05) action = 2;
-    } else { // far
+    } else { 
         if (decision < 0.05) action = 1;
         else if (decision < 0.01) action = 2;
     }
 }
 
-if (action === 1 || action ===2 && trashBoss.velocityY <-2) { // jump
+if (action === 1 || action ===2 && trashBoss.velocityY <-2) { 
     const original = trashBoss.image.src;
     trashBoss.image.src = trashjump;
     trashBoss.velocityY = -10;
@@ -390,7 +390,7 @@ if (action === 1 || action ===2 && trashBoss.velocityY <-2) { // jump
     else trashBoss.velocityX = -20;
     setTimeout(() => { trashBoss.image.src = original; action = -1; }, 800);
     setTimeout(() => { trashBoss.image.src = original; action = 0; }, 2000);
-} else if (action === 2 && trashBoss.velocityY > -2) { // walk toward jelly
+} else if (action === 2 && trashBoss.velocityY > -2) { 
     const original = trashBoss.image.src;
     trashBoss.image.src = trashwalk;
     if (trashBoss.x < jelly.x-200) trashBoss.velocityX = 5;
@@ -405,7 +405,7 @@ if (action === 1 || action ===2 && trashBoss.velocityY <-2) { // jump
 
 
 
-drawHitbox(jelly, 'blue');       // jelly in blue
+drawHitbox(jelly, 'blue');      
 drawHitbox(trashBoss, 'red');
   
 }
