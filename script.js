@@ -25,7 +25,7 @@ let trashBoss = {
   velocityX: 0,
   width: 50,
   height: 50,
-  image: jellyImg
+  image: trashB
 };
 
 
